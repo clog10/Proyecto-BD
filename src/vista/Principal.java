@@ -90,20 +90,17 @@ public class Principal extends javax.swing.JFrame {
     }
 
     public class Imagen extends javax.swing.JPanel {
-        //private String ruta;
         public Imagen() {
             this.setSize(1000, 600); //se selecciona el tamaño del panel
-            //this.ruta=ruta;
         }
 
-//Se crea un método cuyo parámetro debe ser un objeto Graphics
+    //Se crea un método cuyo parámetro debe ser un objeto Graphics
         public void paint(Graphics grafico) {
             Dimension height = getSize();
 
-//Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
+    //Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
             ImageIcon Img = new ImageIcon(getClass().getResource("/vista/9.jpg"));
-            //ImageIcon Img = new ImageIcon(getClass().getResource(ruta));
-//se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
+    //se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
             grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
 
             setOpaque(false);

@@ -2,14 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejemplodb;
+package modelo;
 
 import java.sql.*; 
 
 public class conectate { 
-   static String bd = "inegi"; 
+   static String bd = "dpproyecto"; 
    static String login = "root"; 
-   static String password = "12345"; 
+   static String password = "123456"; 
    static String url = "jdbc:mysql://localhost/"+bd; 
  
    Connection conn = null; 
@@ -36,3 +36,5 @@ public class conectate {
       conn = null; 
    } 
 }
+
+

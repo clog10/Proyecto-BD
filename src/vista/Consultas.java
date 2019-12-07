@@ -1,5 +1,5 @@
-
 package vista;
+
 import com.jtattoo.plaf.fast.FastLookAndFeel;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -79,11 +79,11 @@ public class Consultas extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-           Properties props = new Properties();
+            Properties props = new Properties();
             FastLookAndFeel.setCurrentTheme(props);
             UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
-        } catch (Exception e){
-            
+        } catch (Exception e) {
+
         }
         //</editor-fold>
 
@@ -94,28 +94,26 @@ public class Consultas extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void cargaImagen() {
         Imagen Imagen = new Imagen();
         jPanel1.add(Imagen);
         jPanel1.repaint();
     }
-    
+
     public class Imagen extends javax.swing.JPanel {
-        //private String ruta;
+
         public Imagen() {
             this.setSize(600, 350); //se selecciona el tamaño del panel
-            //this.ruta=ruta;
         }
 
-//Se crea un método cuyo parámetro debe ser un objeto Graphics
+    //Se crea un método cuyo parámetro debe ser un objeto Graphics
         public void paint(Graphics grafico) {
             Dimension height = getSize();
 
-//Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
+    //Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
             ImageIcon Img = new ImageIcon(getClass().getResource("/vista/set.jpg"));
-            //ImageIcon Img = new ImageIcon(getClass().getResource(ruta));
-//se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
+    //se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
             grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
 
             setOpaque(false);
@@ -129,4 +127,3 @@ public class Consultas extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
-
