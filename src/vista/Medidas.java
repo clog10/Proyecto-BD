@@ -44,6 +44,7 @@ public class Medidas extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(100, 100));
         setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
