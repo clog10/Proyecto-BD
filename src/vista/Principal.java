@@ -99,7 +99,7 @@ public class Principal extends javax.swing.JFrame {
             Dimension height = getSize();
 
     //Se selecciona la imagen que tenemos en el paquete de la //ruta del programa
-            ImageIcon Img = new ImageIcon(getClass().getResource("/vista/9.jpg"));
+            ImageIcon Img = new ImageIcon(getClass().getResource("/Imagenes/9.jpg"));
     //se dibuja la imagen que tenemos en el paquete Images //dentro de un panel
             grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
 
