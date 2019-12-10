@@ -7,12 +7,12 @@ package modelo;
 import java.sql.*; 
 
 public class conectate { 
-   static String bd = "dpproyecto"; 
+   static String bd = "proyectofintaller"; 
    static String login = "root"; 
-   static String password = "123456"; 
+   static String password = "RA16161255"; 
    static String url = "jdbc:mysql://localhost/"+bd; 
  
-   Connection conn = null; 
+   private Connection conn = null; 
     
    public conectate() { 
       try{          
