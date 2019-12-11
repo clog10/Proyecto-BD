@@ -202,7 +202,7 @@ public class Materiales extends javax.swing.JFrame {
         //int filaPulsada = jTable1.getSelectedRow();
         if (fila > -1){
             //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
-            int id = (int) jTable1.getValueAt(fila, 0);
+            int id = Integer.parseInt((String) jTable1.getValueAt(fila, 0));
             mmm.deleteMaterial(id);
             updateTabla();
             fila=-1;
