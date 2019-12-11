@@ -108,8 +108,8 @@ public void deleteCliente(int cod){
             "set idcliente = ? ," +
             "nombre = ? ," +
             "ap1 = ? ," +                    
-            "ap2 = ? " +   
-            "rfc = ? " +   
+            "ap2 = ? ," +   
+            "rfc = ? ," +   
             "correo = ? " +   
             "where idcliente = ? ");            
             pstm.setInt(1, id);
