@@ -60,7 +60,7 @@ public class EstatusDB {
             System.out.println(e);
         }
 
-        Object[][] data = new String[registros][6];
+        Object[][] data = new String[registros][2];
         //realizamos la consulta sql y llenamos los datos en "Object"
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("SELECT "
@@ -99,6 +99,7 @@ public class EstatusDB {
         }
     }
 }
+
 
 
 

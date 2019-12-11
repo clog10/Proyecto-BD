@@ -9,11 +9,11 @@ package modelo;
  *
  * @author mac
  */
-public class Herraje {
+public class Herrajes {
     private int idherraje;
     private String tipo;
 
-    public Herraje(int idherraje, String tipo) {
+    public Herrajes(int idherraje, String tipo) {
         this.idherraje = idherraje;
         this.tipo = tipo;
     }

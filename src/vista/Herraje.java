@@ -4,20 +4,28 @@
  * and open the template in the editor.
  */
 package vista;
+import ModeloDB.HerrajeDB;
 import com.jtattoo.plaf.fast.FastLookAndFeel;
 import java.util.Properties;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import modelo.Herrajes;
 /**
  *
  * @author Clog_10
  */
 public class Herraje extends javax.swing.JFrame {
-
+    Herrajes herraje;
+    HerrajeDB hhh;
+    Object[][] dtPer;
+        int fila = -1;
     /**
      * Creates new form Herraje
      */
     public Herraje() {
         initComponents();
+        hhh=new HerrajeDB();
+        updateTabla();
     }
 
     /**
@@ -67,6 +75,11 @@ public class Herraje extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Herraje"));
@@ -76,10 +89,25 @@ public class Herraje extends javax.swing.JFrame {
         jLabel2.setText("Herraje:");
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,6 +175,60 @@ public class Herraje extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(jTextField1.getText());
+        String nombre=jTextField2.getText();
+         herraje=new Herrajes(id,nombre);
+         this.hhh.ingresaDatosHerraje(herraje);
+        updateTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (fila > -1){
+         int id =Integer.parseInt(jTextField1.getText());
+         String nombre=jTextField2.getText();
+         
+        hhh.updateHerraje(id,nombre);
+        updateTabla(); 
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int filaPulsada = jTable1.getSelectedRow();
+        if (fila > -1){
+            //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
+            int id = (int) jTable1.getValueAt(filaPulsada, 0);
+            hhh.deleteHerraje(id);
+            updateTabla();
+            fila=-1;
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int id=0;
+        int filaPulsada = jTable1.getSelectedRow();
+            id = Integer.parseInt((String)jTable1.getValueAt(filaPulsada, 0));
+            String nombre = (String) jTable1.getValueAt(filaPulsada, 1);
+            
+            jTextField1.setText(""+id);
+            jTextField2.setText(nombre);
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+     
+     private void updateTabla(){             
+        String[] columNames = {"id","Herraje"};  
+        // se utiliza la funcion
+        dtPer = hhh.getDatos();
+        System.out.println(hhh.getDatos());
+        // se colocan los datos en la tabla
+        DefaultTableModel datos = new DefaultTableModel(dtPer,columNames);                        
+        jTable1.setModel(datos); 
+    }
     /**
      * @param args the command line arguments
      */
