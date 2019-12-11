@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.sql.*; 
 
 public class conectate { 
+
    static String bd = "proyectotbase"; 
+
    static String login = "root"; 
    static String password = "RA16161255"; 
    static String url = "jdbc:mysql://localhost/"+bd; 
@@ -48,6 +50,9 @@ public class conectate {
    
    
 }
+
+
+
 
 
 
