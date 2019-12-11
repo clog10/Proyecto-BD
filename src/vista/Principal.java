@@ -6,13 +6,14 @@ import java.awt.Graphics;
 import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
+import modelo.conectate;
 
 /**
  *
  * @author Clog_10
  */
 public class Principal extends javax.swing.JFrame {
-
+    conectate con = new conectate();
     /**
      * Creates new form Principal
      */

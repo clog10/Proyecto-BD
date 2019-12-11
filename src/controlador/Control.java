@@ -8,6 +8,7 @@ package controlador;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import modelo.Clientes;
 import modelo.conectate;
 
 /**
@@ -21,7 +22,25 @@ public class Control {
         con = new conectate();
     }
     
-    public void NuevoCliente(int idcliente, String nombre, String apellido1, String apellido2, String rfc, String correo){
+    public void ingresaDatosCliente(Clientes c){
+        try{
+            PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO cliente (idcliente, nombre, ap1, ap2, rfc, correo)"
+                    + "VALUES(?,?,?,?,?,?)");
+            pstm.setInt(1, c.getIdcliente());
+            pstm.setString(2, c.getNombre());
+            pstm.setString(3, c.getApellido1());
+            pstm.setString(4, c.getApellido2());
+            pstm.setString(5, c.getRfc());
+            pstm.setString(6, c.getCorreo());
+            int count = pstm.executeUpdate();
+            System.out.println("Se han insertado: " + count);
+            pstm.close();
+            
+        }catch (Exception ex) {
+            System.out.println("ERROR AL INTRODUCIR DATOS DEL CLIENTE");
+        }
+    }
+   /* public void NuevoCliente(int idcliente, String nombre, String apellido1, String apellido2, String rfc, String correo){
        try {            
            try (PreparedStatement pstm = con.getConnection().prepareStatement("insert into " + 
                         "cliente(idcliente, nombre, ap1, ap2, rfc, correo) " +
@@ -37,7 +56,7 @@ public class Control {
          }catch(SQLException e){
          System.out.println(e);
       }
-   }
+   }*/
     
     
     public Object [][] getDatos(){

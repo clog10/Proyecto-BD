@@ -9,7 +9,7 @@ package modelo;
  *
  * @author mac
  */
-public class Cliente {
+public class Clientes {
     private int idcliente;
     private String nombre;
     private String apellido1;
@@ -17,7 +17,7 @@ public class Cliente {
     private String rfc;
     private String correo;
 
-    public Cliente(int idcliente, String nombre, String apellido1, String apellido2, String rfc, String correo) {
+    public Clientes(int idcliente, String nombre, String apellido1, String apellido2, String rfc, String correo) {
         this.idcliente = idcliente;
         this.nombre = nombre;
         this.apellido1 = apellido1;
