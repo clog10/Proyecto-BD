@@ -6,7 +6,7 @@ package vista;
  * @author Clog_10
  */
 import com.jtattoo.plaf.fast.FastLookAndFeel;
-import controlador.Control;
+import ModeloDB.ClienteDB;
 import java.util.Properties;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -14,17 +14,18 @@ import modelo.Clientes;
 import modelo.conectate;
 
 public class Cliente extends javax.swing.JFrame {
-    Control contro;
+    ClienteDB contro;
     Clientes clien;
     conectate con;
     Object[][] dtPer;
+        int fila = -1;
     /**
      * Creates new form Cliente
      */
     public Cliente() {
         initComponents();
         //con=new conectate();
-        contro=new Control();
+        contro=new ClienteDB();
         updateTabla();
     }
 
@@ -92,6 +93,11 @@ public class Cliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Cliente"));
@@ -109,6 +115,11 @@ public class Cliente extends javax.swing.JFrame {
         jLabel6.setText("Correo");
 
         jButton1.setText("Modificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButtonAgregarCli.setText("Agregar");
         jButtonAgregarCli.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +129,11 @@ public class Cliente extends javax.swing.JFrame {
         });
 
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -228,9 +244,53 @@ public class Cliente extends javax.swing.JFrame {
         limpiaCliente();
         updateTabla();
     }//GEN-LAST:event_jButtonAgregarCliActionPerformed
-    
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int filaPulsada = jTable1.getSelectedRow();
+        if (fila > -1){
+            //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
+            int id = (int) jTable1.getValueAt(filaPulsada, 0);
+            contro.deleteCliente(id);
+            updateTabla();
+            fila=-1;
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
         
-        int fila = -1;
+        if (fila > -1){
+         String id =jTextFieldID.getText();
+         String nombre=jTextFieldNOM.getText();
+         String apellido1=jTextFieldAP1.getText();
+         String apellido2=jTextFieldAP2.getText();
+         String rfc=jTextFieldRFC.getText();
+         String correo=jTextFieldCORREO.getText();
+        contro.updateCliente(id,nombre,apellido1,apellido2,rfc,correo);
+        updateTabla(); 
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int id=0;
+        int filaPulsada = jTable1.getSelectedRow();
+            id = Integer.parseInt((String)jTable1.getValueAt(filaPulsada, 0));
+            String nombre = (String) jTable1.getValueAt(filaPulsada, 1);
+            String apellido1 = (String) jTable1.getValueAt(filaPulsada, 2);
+            String apellido2 = (String) jTable1.getValueAt(filaPulsada, 3);
+            String rfc = (String) jTable1.getValueAt(filaPulsada, 4);
+            String correo = (String) jTable1.getValueAt(filaPulsada, 5);
+            
+            jTextFieldID.setText(""+id);
+            jTextFieldNOM.setText(nombre);
+            jTextFieldAP1.setText(apellido1);
+            jTextFieldAP2.setText(apellido2);
+            jTextFieldRFC.setText(rfc);
+            jTextFieldCORREO.setText(correo);
+    }//GEN-LAST:event_jTable1MouseClicked
+
     
     private void updateTabla(){             
         String[] columNames = {"id","Nombre","Apellido Paterno","Apellido Materno","RFC","Correo Electrónico"};  

@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
-
-import vista.Cliente;
+package ModeloDB;
 
 /**
  *
- * @author Roberto Carlos
+ * @author Clog_10
  */
-public class Inicio {
-    public static void main(String[]args){
-        Cliente cli=new Cliente();
-    }
+public class ProductoDB {
+    
 }
+

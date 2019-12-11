@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package ModeloDB;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,10 +17,10 @@ import modelo.conectate;
  *
  * @author Roberto Carlos
  */
-public class Control {
+public class ClienteDB {
     conectate con;
     
-    public Control(){
+    public ClienteDB(){
         con = new conectate();
     }
     
@@ -42,23 +42,19 @@ public class Control {
             System.out.println("ERROR AL INTRODUCIR DATOS DEL CLIENTE");
         }
     }
-   /* public void NuevoCliente(int idcliente, String nombre, String apellido1, String apellido2, String rfc, String correo){
-       try {            
-           try (PreparedStatement pstm = con.getConnection().prepareStatement("insert into " + 
-                        "cliente(idcliente, nombre, ap1, ap2, rfc, correo) " +
-                        " values(?,?,?,?,?,?)")) {
-               pstm.setInt(1, idcliente);
-               pstm.setString(2, nombre);
-               pstm.setString(3, apellido1);
-               pstm.setString(4, apellido2);                        
-               pstm.setString(5, rfc);      
-               pstm.setString(6, correo); 
-               pstm.execute();
-           }            
-         }catch(SQLException e){
-         System.out.println(e);
-      }
-   }*/
+    
+    
+public void deleteCliente(int cod){  
+            try {                
+                PreparedStatement pstm = con.getConnection().prepareStatement("delete from cliente where idcliente = ?");            
+                pstm.setInt(1, cod);                   
+                pstm.execute();
+                pstm.close();            
+            }catch(SQLException e){
+            System.out.println(e);
+            }            
+   }
+
     
     
     public Object [][] getDatos(){
@@ -105,6 +101,29 @@ public class Control {
     return data;
  }
     
+    public void updateCliente(String id,String nombre, String ap1, String ap2, String rfc,String correo){
+       try {            
+            PreparedStatement pstm = con.getConnection().prepareStatement("update cliente " +
+            "set idcliente = ? ," +
+            "nombre = ? ," +
+            "ap1 = ? ," +                    
+            "ap2 = ? " +   
+            "rfc = ? " +   
+            "correo = ? " +   
+            "where idcliente = ? ");            
+            pstm.setString(1, id);
+            pstm.setString(2, nombre);
+            pstm.setString(3, ap1);
+            pstm.setString(4, ap2);
+            pstm.setString(5, rfc);
+            pstm.setString(6, correo);
+            pstm.execute();
+            pstm.close();            
+         }catch(SQLException e){
+         System.out.println(e);
+      }
+   }
+    
     public List<Clientes> listClientes() {
 
         String consultaSQL="Select * from cliente;";
@@ -133,6 +152,12 @@ public class Control {
     }
     
 }
+
+
+
+
+
+
 
 
 
