@@ -13,15 +13,17 @@ import modelo.conectate;
  * @author Clog_10
  */
 public class Principal extends javax.swing.JFrame {
-    conectate con = new conectate();
+    conectate con;
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
         cargaImagen();
+        con = new conectate();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
