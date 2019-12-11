@@ -9,11 +9,11 @@ package modelo;
  *
  * @author mac
  */
-public class Colores {
+public class Color {
     private int idcolor;
     private String color;
 
-    public Colores(int idcolor, String color) {
+    public Color(int idcolor, String color) {
         this.idcolor = idcolor;
         this.color = color;
     }

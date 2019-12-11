@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Colores;
+import modelo.Color;
 import modelo.conectate;
 /**
  *
