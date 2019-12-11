@@ -17,6 +17,7 @@ import modelo.conectate;
  *
  * @author Roberto Carlos
  */
+
 public class ClienteDB {
     conectate con;
     
@@ -152,6 +153,7 @@ public void deleteCliente(int cod){
     }
     
 }
+
 
 
 
