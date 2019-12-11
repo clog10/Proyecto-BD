@@ -19,7 +19,7 @@ public class VentaDB {
         con = new conectate();
     }
     
-     public void ingresaDatosCliente(Clientes c){
+     /*public void ingresaDatosCliente(Clientes c){
         try{
             PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO cliente (idcliente, nombre, ap1, ap2, rfc, correo)"
                     + "VALUES(?,?,?,?,?,?)");
@@ -117,7 +117,7 @@ public void deleteCliente(int cod){
          }catch(SQLException e){
          System.out.println(e);
       }
-   }
+   }*/
 }
 
 
