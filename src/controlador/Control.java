@@ -8,6 +8,8 @@ package controlador;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.Clientes;
 import modelo.conectate;
 
@@ -72,7 +74,7 @@ public class Control {
          System.out.println(e);
       }    
        
-      Object[][] data = new String[registros][4];  
+      Object[][] data = new String[registros][6];  
     //realizamos la consulta sql y llenamos los datos en "Object"
       try{    
          PreparedStatement pstm = con.getConnection().prepareStatement("SELECT " +
@@ -102,4 +104,39 @@ public class Control {
     }
     return data;
  }
+    
+    public List<Clientes> listClientes() {
+
+        String consultaSQL="Select * from cliente;";
+        
+        List<Clientes> clientes = new ArrayList<Clientes>();
+
+        try {
+          PreparedStatement  ps = con.getConnection().prepareStatement("Select * from cliente;");
+          ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Clientes l = new Clientes();
+                l.setIdcliente(rs.getInt("idcliente"));
+                l.setNombre(rs.getString("nombre"));
+                l.setApellido1(rs.getString("ap1"));
+                l.setApellido2(rs.getString("ap2"));
+                l.setRfc(rs.getString("rfc"));
+                l.setCorreo(rs.getString("correo"));
+                clientes.add(l);
+            }
+
+        } catch (SQLException exception) {
+            System.err.println("Error al CARGAR DATOS (Libro)" + exception);
+        }
+        return clientes;
+    }
+    
 }
+
+
+
+
+
+
+

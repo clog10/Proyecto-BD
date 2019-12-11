@@ -11,15 +11,21 @@ import java.util.Properties;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
+import modelo.conectate;
 
 public class Cliente extends javax.swing.JFrame {
     Control contro;
     Clientes clien;
+    conectate con;
+    Object[][] dtPer;
     /**
      * Creates new form Cliente
      */
     public Cliente() {
         initComponents();
+        //con=new conectate();
+        contro=new Control();
+        updateTabla();
     }
 
     /**
@@ -223,13 +229,14 @@ public class Cliente extends javax.swing.JFrame {
         updateTabla();
     }//GEN-LAST:event_jButtonAgregarCliActionPerformed
     
-        Object[][] dtPer;
+        
         int fila = -1;
     
     private void updateTabla(){             
         String[] columNames = {"id","Nombre","Apellido Paterno","Apellido Materno","RFC","Correo Electrónico"};  
         // se utiliza la funcion
         dtPer = contro.getDatos();
+        System.out.println(contro.getDatos());
         // se colocan los datos en la tabla
         DefaultTableModel datos = new DefaultTableModel(dtPer,columNames);                        
         jTable1.setModel(datos); 

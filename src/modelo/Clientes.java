@@ -26,6 +26,9 @@ public class Clientes {
         this.correo = correo;
     }
 
+    public Clientes() {
+    }
+    
     public int getIdcliente() {
         return idcliente;
     }
@@ -73,5 +76,12 @@ public class Clientes {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    @Override
+    public String toString() {
+        return "Clientes{" + "idcliente=" + idcliente + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", rfc=" + rfc + ", correo=" + correo +"\n"+ '}';
+    }
+    
+    
     
 }

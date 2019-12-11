@@ -29,7 +29,7 @@ public class conectate {
          System.out.println(e); 
       } 
    } 
-    
+   
    public Connection getConnection(){ 
       return conn; 
    } 
@@ -48,6 +48,8 @@ public class conectate {
    
    
 }
+
+
 
 
 
