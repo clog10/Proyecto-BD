@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import modelo.Clientes;
 import modelo.conectate;
 import modelo.Detalle_venta;
 import modelo.Encabezado_venta;
@@ -71,32 +72,41 @@ public class VentaDB {
              System.out.println(e);
           }    
 
-          Object[][] data = new String[registros][8];  
+          Object[][] data = new String[registros][12];  
         //realizamos la consulta sql y llenamos los datos en "Object"
           try{    
-             PreparedStatement pstm = con.getConnection().prepareStatement("select * from proyectotbase.encabezado_venta,proyectotbase.detalle_venta where "
-                     + "encabezado_venta.detalle_venta=detalle_venta.iddetalle; ");
+             PreparedStatement pstm = con.getConnection().prepareStatement("    select * from proyectotbase.encabezado_venta,proyectotbase.detalle_venta,proyectotbase.cliente where encabezado_venta.detalle_venta=detalle_venta.iddetalle &&\n" +
+"			proyectotbase.encabezado_venta.idcliente=proyectotbase.cliente.idcliente; ");
              ResultSet res = pstm.executeQuery();
              int i = 0;
              while(res.next()){
                 String idenc = res.getString("idencabezado_venta");
-                String idcliente = res.getString("idcliente");
                 String fecha = res.getDate("fecha").toString();
                 String detalle = res.getString("detalle_venta");
-                data[i][0] = idenc;            
-                data[i][1] = idcliente;            
-                data[i][2] = fecha;            
-                data[i][3] = detalle; 
-
-                 String iddetalle=res.getString("iddetalle");
+                data[i][0] = idenc;                       
+                data[i][1] = fecha;            
+                data[i][2] = detalle; 
                   String idproducto=res.getString("idproducto");
                    String costo=res.getString("costo_total");
-                    String cant=res.getString("cantidadproductos");
-                    data[i][4] = iddetalle;            
-                data[i][5] = idproducto;            
-                data[i][6] = costo;            
-                data[i][7] = cant; 
-                i++;
+                    String cant=res.getString("cantidadproductos");            
+                data[i][3] = idproducto;            
+                data[i][4] = costo;            
+                data[i][5] = cant; 
+                
+                String idcli=res.getString("idcliente");
+                String nombre=res.getString("nombre");
+                String ap1= res.getString("ap1");
+                String ap2=res.getString("ap2");
+                String rfc=res.getString("rfc");
+                String correo=res.getString("correo");
+                data[i][6] = idcli;            
+                data[i][7] = nombre;            
+                data[i][8] = ap1; 
+                data[i][9] = ap2;            
+                data[i][10] = rfc;            
+                data[i][11] = correo; 
+                
+               i++;
 
              }
              res.close();
@@ -128,10 +138,19 @@ public class VentaDB {
              System.out.println(e);
           }
        }
+        /*consultas 
+        select * from proyectotbase.encabezado_venta,proyectotbase.detalle_venta,proyectotbase.cliente,proyectotbase.producto
+    where encabezado_venta.detalle_venta=detalle_venta.iddetalle &&
+			proyectotbase.encabezado_venta.idcliente=proyectotbase.cliente.idcliente&&
+            proyectotbase.detalle_venta.idproducto=proyectotbase.producto.idproducto;
+    
+    delete encabezado_venta,detalle_venta from encabezado_venta
+    join encabezado_venta on encabezado_venta.detalle_venta= detalle_venta.iddetalle
+    where encabezado_venta.detalle_venta=9;*/
 
         public void deleteVenta(int cod){  
                 try {                
-                    PreparedStatement pstm = con.getConnection().prepareStatement("delete from encabezado_venta where detalle_venta=detalleventa.iddetalle ?");            
+                    PreparedStatement pstm = con.getConnection().prepareStatement("delete from encabezado_venta,detalle_venta where detalle_venta,detalleventa.iddetalle=?");            
                     pstm.setInt(1, cod);                   
                     pstm.execute();
                     pstm.close();            
@@ -139,6 +158,33 @@ public class VentaDB {
                 System.out.println(e);
                 }            
        }
+        
+        public List<Clientes> listClientes() {
+
+        String consultaSQL="Select * from cliente;";
+        
+        List<Clientes> clientes = new ArrayList<Clientes>();
+
+        try {
+          PreparedStatement  ps = con.getConnection().prepareStatement("Select * from cliente;");
+          ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Clientes l = new Clientes();
+                l.setIdcliente(rs.getInt("idcliente"));
+                l.setNombre(rs.getString("nombre"));
+                l.setApellido1(rs.getString("ap1"));
+                l.setApellido2(rs.getString("ap2"));
+                l.setRfc(rs.getString("rfc"));
+                l.setCorreo(rs.getString("correo"));
+                clientes.add(l);
+            }
+
+        } catch (SQLException exception) {
+            System.err.println("Error al CARGAR DATOS (Libro)" + exception);
+        }
+        return clientes;
+    }
 }
 
 
