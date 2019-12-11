@@ -9,7 +9,7 @@ package modelo;
  *
  * @author mac
  */
-public class Producto {
+public class Productos {
     private int idproducto;
     private int idmodelo;
     private double p_venta_publico;
@@ -17,7 +17,7 @@ public class Producto {
     private int descuento;
     private int idstatus;
 
-    public Producto(int idproducto, int idmodelo, double p_venta_publico, int productos_disponibles, int descuento, int idstatus) {
+    public Productos(int idproducto, int idmodelo, double p_venta_publico, int productos_disponibles, int descuento, int idstatus) {
         this.idproducto = idproducto;
         this.idmodelo = idmodelo;
         this.p_venta_publico = p_venta_publico;

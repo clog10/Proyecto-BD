@@ -200,7 +200,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        Material material=new Material();
+        Materiales material=new Materiales();
         material.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 

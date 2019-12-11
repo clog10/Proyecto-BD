@@ -9,7 +9,7 @@ package modelo;
  *
  * @author mac
  */
-public class Modelo {
+public class Modelos {
     private int idmodelo;
     private String imagen;
     private int idcolor;
@@ -18,7 +18,7 @@ public class Modelo {
     private int idherrajes;
     private double precio;
 
-    public Modelo(int idmodelo, String imagen, int idcolor, int idmaterial, int idmedidas, int idherrajes, double precio) {
+    public Modelos(int idmodelo, String imagen, int idcolor, int idmaterial, int idmedidas, int idherrajes, double precio) {
         this.idmodelo = idmodelo;
         this.imagen = imagen;
         this.idcolor = idcolor;

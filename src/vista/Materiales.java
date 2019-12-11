@@ -11,12 +11,12 @@ import javax.swing.UIManager;
  *
  * @author Clog_10
  */
-public class Material extends javax.swing.JFrame {
+public class Materiales extends javax.swing.JFrame {
 
     /**
      * Creates new form Material
      */
-    public Material() {
+    public Materiales() {
         initComponents();
     }
 
@@ -164,7 +164,7 @@ public class Material extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Material().setVisible(true);
+                new Materiales().setVisible(true);
             }
         });
     }
