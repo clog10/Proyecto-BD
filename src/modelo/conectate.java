@@ -3,15 +3,15 @@
  * and open the template in the editor.
  */
 package modelo;
-import java.sql.Connection;
+//import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.*; 
 
 public class conectate { 
-   static String bd = "dbproyecto"; 
+   static String bd = "proyectofintaller"; 
    static String login = "root"; 
-   static String password = "123456"; 
+   static String password = "RA16161255"; 
    static String url = "jdbc:mysql://localhost/"+bd; 
  
    private Connection conn = null; 

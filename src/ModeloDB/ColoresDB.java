@@ -85,10 +85,11 @@ public class ColoresDB {
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("update colores "
                     + "set idcolor = ? ,"
-                    + "color = ? ,"
+                    + "color = ? "
                     + "where idcolor = ? ");
             pstm.setInt(1, id);
             pstm.setString(2, color);
+            pstm.setInt(3, id);
             pstm.execute();
             pstm.close();
         } catch (SQLException e) {

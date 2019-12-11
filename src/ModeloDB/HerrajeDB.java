@@ -88,10 +88,11 @@ public class HerrajeDB {
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("update herraje "
                     + "set idherraje = ? ,"
-                    + "tipo = ? ,"
+                    + "tipo = ? "
                     + "where idherraje = ? ");
             pstm.setInt(1, id);
             pstm.setString(2, tipo);
+            pstm.setInt(3, id);
             pstm.execute();
             pstm.close();
         } catch (SQLException e) {

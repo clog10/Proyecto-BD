@@ -102,7 +102,7 @@ public void deleteCliente(int cod){
     return data;
  }
     
-    public void updateCliente(String id,String nombre, String ap1, String ap2, String rfc,String correo){
+    public void updateCliente(int id,String nombre, String ap1, String ap2, String rfc,String correo){
        try {            
             PreparedStatement pstm = con.getConnection().prepareStatement("update cliente " +
             "set idcliente = ? ," +
@@ -112,12 +112,13 @@ public void deleteCliente(int cod){
             "rfc = ? " +   
             "correo = ? " +   
             "where idcliente = ? ");            
-            pstm.setString(1, id);
+            pstm.setInt(1, id);
             pstm.setString(2, nombre);
             pstm.setString(3, ap1);
             pstm.setString(4, ap2);
             pstm.setString(5, rfc);
             pstm.setString(6, correo);
+            pstm.setInt(7, id);
             pstm.execute();
             pstm.close();            
          }catch(SQLException e){

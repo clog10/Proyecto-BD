@@ -88,10 +88,11 @@ public class EstatusDB {
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("update estatus "
                     + "set idstatus = ? ,"
-                    + "tipo = ? ,"
+                    + "tipo = ? "
                     + "where idstatus = ? ");
             pstm.setInt(1, id);
             pstm.setString(2, status);
+            pstm.setInt(3, id);
             pstm.execute();
             pstm.close();
         } catch (SQLException e) {

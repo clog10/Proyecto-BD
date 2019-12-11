@@ -62,9 +62,9 @@ public class Cliente extends javax.swing.JFrame {
         jTextFieldAP2 = new javax.swing.JTextField();
         jTextFieldRFC = new javax.swing.JTextField();
         jTextFieldCORREO = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
         jButtonAgregarCli = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(100, 100));
@@ -114,10 +114,10 @@ public class Cliente extends javax.swing.JFrame {
 
         jLabel6.setText("Correo");
 
-        jButton1.setText("Modificar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonModificar.setText("Modificar");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonModificarActionPerformed(evt);
             }
         });
 
@@ -128,10 +128,10 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonEliminarActionPerformed(evt);
             }
         });
 
@@ -145,9 +145,9 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonAgregarCli)
                         .addGap(141, 141, 141)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonModificar)
                         .addGap(147, 147, 147)
-                        .addComponent(jButton3)
+                        .addComponent(jButtonEliminar)
                         .addContainerGap(213, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -201,9 +201,9 @@ public class Cliente extends javax.swing.JFrame {
                             .addComponent(jLabel6))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonModificar)
                     .addComponent(jButtonAgregarCli)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonEliminar))
                 .addContainerGap())
         );
 
@@ -245,23 +245,23 @@ public class Cliente extends javax.swing.JFrame {
         updateTabla();
     }//GEN-LAST:event_jButtonAgregarCliActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         // TODO add your handling code here:
-        int filaPulsada = jTable1.getSelectedRow();
+        //int filaPulsada = jTable1.getSelectedRow();
         if (fila > -1){
             //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
-            int id = (int) jTable1.getValueAt(filaPulsada, 0);
+            int id = (int) jTable1.getValueAt(fila, 0);
             contro.deleteCliente(id);
             updateTabla();
             fila=-1;
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
         
         if (fila > -1){
-         String id =jTextFieldID.getText();
+         int id =Integer.parseInt(jTextFieldID.getText());
          String nombre=jTextFieldNOM.getText();
          String apellido1=jTextFieldAP1.getText();
          String apellido2=jTextFieldAP2.getText();
@@ -270,11 +270,11 @@ public class Cliente extends javax.swing.JFrame {
         contro.updateCliente(id,nombre,apellido1,apellido2,rfc,correo);
         updateTabla(); 
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        int id=0;
+        /*int id=0;
         int filaPulsada = jTable1.getSelectedRow();
             id = Integer.parseInt((String)jTable1.getValueAt(filaPulsada, 0));
             String nombre = (String) jTable1.getValueAt(filaPulsada, 1);
@@ -288,7 +288,16 @@ public class Cliente extends javax.swing.JFrame {
             jTextFieldAP1.setText(apellido1);
             jTextFieldAP2.setText(apellido2);
             jTextFieldRFC.setText(rfc);
-            jTextFieldCORREO.setText(correo);
+            jTextFieldCORREO.setText(correo);*/
+        fila = jTable1.rowAtPoint(evt.getPoint());                 
+         if (fila > -1){                          
+             jTextFieldID.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
+             jTextFieldNOM.setText(String.valueOf(jTable1.getValueAt(fila, 1)));
+             jTextFieldAP1.setText(String.valueOf(jTable1.getValueAt(fila, 2)));
+             jTextFieldAP2.setText(String.valueOf(jTable1.getValueAt(fila, 3)));
+             jTextFieldRFC.setText(String.valueOf(jTable1.getValueAt(fila, 4)));
+             jTextFieldCORREO.setText(String.valueOf(jTable1.getValueAt(fila, 5)));
+         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     
@@ -322,9 +331,9 @@ public class Cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAgregarCli;
+    private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

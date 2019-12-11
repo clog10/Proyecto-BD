@@ -4,20 +4,28 @@
  * and open the template in the editor.
  */
 package vista;
+import ModeloDB.MedidasDB;
 import com.jtattoo.plaf.fast.FastLookAndFeel;
 import java.util.Properties;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import modelo.Medida;
 /**
  *
  * @author Clog_10
  */
 public class Medidas extends javax.swing.JFrame {
-
+    Medida medida;
+    MedidasDB mmm;
+    Object[][] dtPer;
+        int fila = -1;
     /**
      * Creates new form Medidas
      */
     public Medidas() {
         initComponents();
+        mmm=new MedidasDB();
+        updateTabla();
     }
 
     /**
@@ -35,9 +43,9 @@ public class Medidas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonAgregar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -70,6 +78,11 @@ public class Medidas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Id:");
@@ -80,11 +93,26 @@ public class Medidas extends javax.swing.JFrame {
 
         jLabel4.setText("Fondo");
 
-        jButton1.setText("Agregar");
+        jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Modificar");
+        jButtonModificar.setText("Modificar");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Eliminar");
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,11 +147,11 @@ public class Medidas extends javax.swing.JFrame {
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonAgregar)
                         .addGap(97, 97, 97)
-                        .addComponent(jButton2)
+                        .addComponent(jButtonModificar)
                         .addGap(82, 82, 82)
-                        .addComponent(jButton3)))
+                        .addComponent(jButtonEliminar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,15 +173,77 @@ public class Medidas extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonAgregar)
+                    .addComponent(jButtonModificar)
+                    .addComponent(jButtonEliminar))
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(jTextField1.getText());
+        int ancho=Integer.parseInt(jTextField2.getText());
+        int alto=Integer.parseInt(jTextField3.getText());
+        int fondo=Integer.parseInt(jTextField4.getText());
+         medida=new Medida(id,ancho,alto,fondo);
+         this.mmm.ingresaDatosMedidas(medida);
+        updateTabla();
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        // TODO add your handling code here:
+        if (fila > -1){
+         int id =Integer.parseInt(jTextField1.getText());
+         int ancho=Integer.parseInt(jTextField2.getText());
+        int alto=Integer.parseInt(jTextField3.getText());
+        int fondo=Integer.parseInt(jTextField4.getText());
+         
+        mmm.updateMedidas(id,ancho,alto,fondo);
+        updateTabla(); 
+        }
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        // TODO add your handling code here:
+         //int filaPulsada = jTable1.getSelectedRow();
+        if (fila > -1){
+            //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
+            int id = (int) jTable1.getValueAt(fila, 0);
+            mmm.deleteMedidas(id);
+            updateTabla();
+            fila=-1;
+        }
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        /*int id=0;
+        int filaPulsada = jTable1.getSelectedRow();
+            id = Integer.parseInt((String)jTable1.getValueAt(filaPulsada, 0));
+            String nombre = (String) jTable1.getValueAt(filaPulsada, 1);
+            
+            jTextField1.setText(""+id);
+            jTextField2.setText(nombre);*/
+         fila = jTable1.rowAtPoint(evt.getPoint());                 
+         if (fila > -1){                          
+             jTextField1.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
+             jTextField2.setText(String.valueOf(jTable1.getValueAt(fila, 1)));
+             jTextField3.setText(String.valueOf(jTable1.getValueAt(fila, 2)));
+             jTextField4.setText(String.valueOf(jTable1.getValueAt(fila, 3)));
+         }
+    }//GEN-LAST:event_jTable1MouseClicked
+    private void updateTabla(){             
+        String[] columNames = {"id","Ancho","Alto","Fondo"};  
+        // se utiliza la funcion
+        dtPer = mmm.getDatos();
+        System.out.println(mmm.getDatos());
+        // se colocan los datos en la tabla
+        DefaultTableModel datos = new DefaultTableModel(dtPer,columNames);                        
+        jTable1.setModel(datos); 
+    }
     /**
      * @param args the command line arguments
      */
@@ -176,9 +266,9 @@ public class Medidas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAgregar;
+    private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
