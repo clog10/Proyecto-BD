@@ -37,10 +37,12 @@ public class Principal extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton1.setText("Clientes");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +50,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton2.setText("Ventas");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +58,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton3.setText("Productos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +66,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton4.setText("Modelo");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +74,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton5.setText("Estatus");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +82,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton6.setText("Colores");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +90,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton7.setText("Material");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +98,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton8.setText("Herraje");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,10 +106,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton9.setText("Medidas");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton10.setText("Consultas");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
 
@@ -113,20 +131,25 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton9)
                     .addComponent(jButton2)
-                    .addComponent(jButton1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(82, 82, 82)
+                        .addComponent(jButton10))
                     .addComponent(jButton3)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton7)
                     .addComponent(jButton8))
-                .addContainerGap(871, Short.MAX_VALUE))
+                .addContainerGap(723, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton10))
                 .addGap(37, 37, 37)
                 .addComponent(jButton2)
                 .addGap(34, 34, 34)
@@ -216,6 +239,12 @@ public class Principal extends javax.swing.JFrame {
         medidas.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        Consult c=new Consult();
+        c.setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,7 +274,7 @@ public class Principal extends javax.swing.JFrame {
 
     public class Imagen extends javax.swing.JPanel {
         public Imagen() {
-            this.setSize(1000, 600); //se selecciona el tamaño del panel
+            this.setSize(1100, 620); //se selecciona el tamaño del panel
         }
 
     //Se crea un método cuyo parámetro debe ser un objeto Graphics
@@ -264,6 +293,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
