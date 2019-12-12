@@ -43,7 +43,7 @@ public class ModeloDB {
         }catch (Exception ex) {
             System.out.println("ERROR AL INTRODUCIR DATOS DEL MODELO");
         }
-    }
+    } 
     
     
 public void deleteModelo(int cod){  
@@ -220,6 +220,7 @@ public void deleteModelo(int cod){
     }
     
 }
+
 
 
 

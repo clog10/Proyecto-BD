@@ -28,6 +28,9 @@ public class Modelos {
         this.precio = precio;
     }
 
+    public Modelos() {
+    }
+    
     public int getIdmodelo() {
         return idmodelo;
     }
@@ -83,5 +86,12 @@ public class Modelos {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "" + idmodelo + "," + imagen + "," + idcolor + "," + idmaterial + "," + idmedidas + "," + idherrajes + "," + precio;
+    }
+    
+    
     
 }

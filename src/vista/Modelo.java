@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 import ModeloDB.ModeloDB;
 import com.jtattoo.plaf.fast.FastLookAndFeel;
@@ -14,12 +10,14 @@ import modelo.Color;
 import modelo.Herrajes;
 import modelo.Material;
 import modelo.Medida;
+import modelo.Modelos;
 /**
  *
  * @author Clog_10
  */
 public class Modelo extends javax.swing.JFrame {
         ModeloDB md;
+        Modelos m;
          Object[][] dtPer;
         int fila = -1;
     /**
@@ -111,10 +109,25 @@ public class Modelo extends javax.swing.JFrame {
         jLabel7.setText("Precio");
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,6 +232,99 @@ public class Modelo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int color=0;
+        int material=0;
+        int medidas=0;
+        int herraje=0;
+        int id=Integer.parseInt(jTextField1.getText());
+        String imagen=jTextField2.getText();
+        double precio=Double.parseDouble(jTextField3.getText());
+        
+        String prr = (String) jComboBox1.getSelectedItem();
+        String[] textElements = prr.split(",");
+        for (int i = 0; i < textElements.length; i++) {
+            color = Integer.parseInt(textElements[0]);
+        }
+        
+        String prr2 = (String) jComboBox2.getSelectedItem();
+        String[] textElements2 = prr2.split(",");
+        for (int i = 0; i < textElements2.length; i++) {
+            material = Integer.parseInt(textElements2[0]);
+        }
+        
+        String prr3 = (String) jComboBox3.getSelectedItem();
+        String[] textElements3 = prr3.split(",");
+        for (int i = 0; i < textElements3.length; i++) {
+            medidas = Integer.parseInt(textElements3[0]);
+        }
+        
+        String prr4 = (String) jComboBox4.getSelectedItem();
+        String[] textElements4 = prr4.split(",");
+        for (int i = 0; i < textElements4.length; i++) {
+            herraje = Integer.parseInt(textElements4[0]);
+        }
+        
+        m=new Modelos(id,imagen,color,material,medidas,herraje,precio);
+        this.md.ingresaDatosModelo(m);
+        updateTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         if (fila > -1){
+            //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
+
+            int id = Integer.parseInt((String) jTable1.getValueAt(fila, 0));
+
+            //int id = Integer.parseInt( (String)jTable1.getValueAt(fila, 0));
+            md.deleteModelo(id);
+            updateTabla();
+            fila=-1;
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int color=0;
+        int material=0;
+        int medidas=0;
+        int herraje=0;
+        int id=Integer.parseInt(jTextField1.getText());
+        String imagen=jTextField2.getText();
+        double precio=Double.parseDouble(jTextField3.getText());
+        
+        String prr = (String) jComboBox1.getSelectedItem();
+        String[] textElements = prr.split(",");
+        for (int i = 0; i < textElements.length; i++) {
+            color = Integer.parseInt(textElements[0]);
+        }
+        
+        String prr2 = (String) jComboBox2.getSelectedItem();
+        String[] textElements2 = prr2.split(",");
+        for (int i = 0; i < textElements2.length; i++) {
+            material = Integer.parseInt(textElements2[0]);
+        }
+        
+        String prr3 = (String) jComboBox3.getSelectedItem();
+        String[] textElements3 = prr3.split(",");
+        for (int i = 0; i < textElements3.length; i++) {
+            medidas = Integer.parseInt(textElements3[0]);
+        }
+        
+        String prr4 = (String) jComboBox4.getSelectedItem();
+        String[] textElements4 = prr4.split(",");
+        for (int i = 0; i < textElements4.length; i++) {
+            herraje = Integer.parseInt(textElements4[0]);
+        }
+        
+       // m=new Modelos(id,imagen,color,material,medidas,herraje,precio);
+        this.md.updateModelo(id,imagen,color,material,medidas,herraje,precio);
+        updateTabla();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -269,7 +375,7 @@ public class Modelo extends javax.swing.JFrame {
     }
     
      private void updateTabla(){             
-        String[] columNames = {"id","Nombre","Apellido Paterno","Apellido Materno","RFC","Correo Electrónico"};  
+        String[] columNames = {"id","imagen","color","material","medidas","herraje","precio"};  
         // se utiliza la funcion
         dtPer = md.getDatos();
         System.out.println(md.getDatos());
