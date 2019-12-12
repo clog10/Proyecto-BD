@@ -347,7 +347,8 @@ public class Venta extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(Venta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //updateTabla();
+        updateTablaDetalle();
+        updateTablaEncabezado();
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed

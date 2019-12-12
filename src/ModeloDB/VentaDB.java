@@ -134,10 +134,10 @@ public class VentaDB {
             System.out.println(e);
         }
 
-        Object[][] data = new String[registros][8];
+        Object[][] data = new String[registros][7];
         //realizamos la consulta sql y llenamos los datos en "Object"
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement(" select * from detalle_venta, producto where detalle_venta.idproducto=producto.idproducto;  ");
+            PreparedStatement pstm = con.getConnection().prepareStatement(" select * from detalle_venta, producto where detalle_venta.idproducto=producto.idproducto order by detalle_venta.idencabezado;");
             ResultSet res = pstm.executeQuery();
             int i = 0;
             while (res.next()) {
@@ -151,10 +151,10 @@ public class VentaDB {
                 String precio = res.getString("p_venta_publico");
                 String cant = res.getString("cantidadproductos");
                 String costo = res.getString("costo_total");
-                data[i][4] = desc;
-                data[i][5] = precio;
-                data[i][6] = cant;
-                data[i][7] = costo;
+                data[i][3] = desc;
+                data[i][4] = precio;
+                data[i][5] = cant;
+                data[i][6] = costo;
 
                 i++;
 
