@@ -15,10 +15,10 @@ import java.util.Date;
 public class Encabezado_venta {
     private int idencabezado_venta;
     private int idcliente;
-    private Date fecha;
+    private String fecha;
     private int detalle_venta;
 
-    public Encabezado_venta(int idencabezado_venta, int idcliente, Date fecha, int detalle_venta) {
+    public Encabezado_venta(int idencabezado_venta, int idcliente, String fecha, int detalle_venta) {
         this.idencabezado_venta = idencabezado_venta;
         this.idcliente = idcliente;
         this.fecha = fecha;
@@ -41,11 +41,11 @@ public class Encabezado_venta {
         this.idcliente = idcliente;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

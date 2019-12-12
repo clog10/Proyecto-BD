@@ -14,7 +14,7 @@ import modelo.Encabezado_venta;
  */
 
 public class Venta extends javax.swing.JFrame {
-    VentaDB vvv;
+    VentaDB vvv; 
     Encabezado_venta enc;
     
     Object[][] dtPer;
@@ -246,7 +246,7 @@ public class Venta extends javax.swing.JFrame {
     }
     
      private void updateTabla(){             
-        String[] columNames = {"id Encabezado","Fecha","id Detalle","id Producto","Costo total","Cantidad de Productos","idcliente",
+        String[] columNames = {"id Encabezado","Fecha","id Detalle","id Producto","Descripcion","Precio producto","Cantidad de Productos","Costo total","idcliente",
                                     "nombre","ap1","ap2","rfc","correo"};  
         // se utiliza la funcion
         dtPer = vvv.getDatos();

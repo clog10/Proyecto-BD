@@ -10,10 +10,10 @@ import java.sql.*;
 
 public class conectate { 
 
-   static String bd = "proyectotbase"; 
+   static String bd = "dbproyecto"; 
 
    static String login = "root"; 
-   static String password = "RA16161255"; 
+   static String password = "123456"; 
    static String url = "jdbc:mysql://localhost/"+bd; 
  
    private Connection conn = null; 
@@ -50,6 +50,7 @@ public class conectate {
    
    
 }
+
 
 
 
