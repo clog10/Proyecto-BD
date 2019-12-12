@@ -16,13 +16,11 @@ public class Encabezado_venta {
     private int idencabezado_venta;
     private int idcliente;
     private String fecha;
-    private int detalle_venta;
 
-    public Encabezado_venta(int idencabezado_venta, int idcliente, String fecha, int detalle_venta) {
+    public Encabezado_venta(int idencabezado_venta, int idcliente, String fecha) {
         this.idencabezado_venta = idencabezado_venta;
         this.idcliente = idcliente;
         this.fecha = fecha;
-        this.detalle_venta = detalle_venta;
     }
 
     public int getIdencabezado_venta() {
@@ -48,13 +46,5 @@ public class Encabezado_venta {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
-    public int getDetalle_venta() {
-        return detalle_venta;
-    }
-
-    public void setDetalle_venta(int detalle_venta) {
-        this.detalle_venta = detalle_venta;
-    }
-    
+ 
 }

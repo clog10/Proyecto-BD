@@ -36,13 +36,11 @@ public class VentaDB {
             fe = fecha.parse(e.getFecha());
             fecha2 = new java.sql.Date(fe.getTime());
 
-            PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO encabezado_venta (idencabezado_venta, idcliente, fecha, detalle_venta)"
-                    + "VALUES(?,?,?,?)");
+            PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO encabezado_venta (idencabezado_venta, idcliente, fecha)"
+                    + "VALUES(?,?,?)");
             pstm.setInt(1, e.getIdencabezado_venta());
             pstm.setInt(2, e.getIdcliente());
-
             pstm.setDate(3, fecha2);
-            pstm.setInt(4, e.getDetalle_venta());
             int count = pstm.executeUpdate();
             System.out.println("Se han insertado: " + count);
             pstm.close();
@@ -54,12 +52,15 @@ public class VentaDB {
 
     public void ingresaDatosDetalle(Detalle_venta e) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO detalle_venta (iddetalle, idproducto, costo_total, cantidadproductos)"
-                    + "VALUES(?,?,?,?)");
+            PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO detalle_venta (iddetalle, costo_total, cantidadproductos,idencabezado,idproducto)"
+                    + "VALUES(?,?,?,?,?)");
             pstm.setInt(1, e.getIddetalle());
-            pstm.setInt(2, e.getIdproducto());
-            pstm.setDouble(3, e.getCosto_total());
-            pstm.setInt(4, e.getCantidadproductos());
+           
+            pstm.setDouble(2, e.getCosto_total());
+            pstm.setInt(3, e.getCantidadproductos());
+            pstm.setInt(4, e.getEncabezado()); 
+            
+             pstm.setInt(5, e.getIdproducto());
             int count = pstm.executeUpdate();
             System.out.println("Se han insertado: " + count);
             pstm.close();
@@ -87,18 +88,18 @@ public class VentaDB {
         Object[][] data = new String[registros][14];
         //realizamos la consulta sql y llenamos los datos en "Object"
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement(" select * from dbproyecto.encabezado_venta,dbproyecto.detalle_venta,"
-                    + "dbproyecto.cliente,dbproyecto.producto\n"
-                    + "    where encabezado_venta.detalle_venta=detalle_venta.iddetalle &&\n"
-                    + "			dbproyecto.encabezado_venta.idcliente=dbproyecto.cliente.idcliente&&\n"
-                    + "            dbproyecto.detalle_venta.idproducto=dbproyecto.producto.idproducto"
-                    + "             order by dbproyecto.encabezado_venta.idencabezado_venta; ");
+            PreparedStatement pstm = con.getConnection().prepareStatement(" select * from dbproyecto2.detalle_venta,dbproyecto2.encabezado_venta,"
+                    + "dbproyecto2.cliente,dbproyecto2.producto\n"
+                    + "    where dbproyecto2.detalle_venta.idencabezado=dbproyecto2.encabezado_venta.idencabezado_venta &&\n"
+                    + "			dbproyecto2.encabezado_venta.idcliente=dbproyecto2.cliente.idcliente&&\n"
+                    + "            dbproyecto2.detalle_venta.idproducto=dbproyecto2.producto.idproducto"
+                    + "             order by dbproyecto2.encabezado_venta.idencabezado_venta; ");
             ResultSet res = pstm.executeQuery();
             int i = 0;
             while (res.next()) {
                 String idenc = res.getString("idencabezado_venta");
                 String fecha = res.getDate("fecha").toString();
-                String detalle = res.getString("detalle_venta");
+                String detalle = res.getString("iddetalle");
                 data[i][0] = idenc;
                 data[i][1] = fecha;
                 data[i][2] = detalle;
@@ -234,6 +235,7 @@ public class VentaDB {
                 l.setProductos_disponibles(rs.getInt("productos_disponibles"));
                 l.setDescuento(rs.getInt("descuento"));
                 l.setIdstatus(rs.getInt("idstatus"));
+                
                 productos.add(l);
             }
 

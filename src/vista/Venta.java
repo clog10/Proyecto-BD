@@ -317,8 +317,8 @@ public class Venta extends javax.swing.JFrame {
         }
         costo = Double.parseDouble(jTextField3.getText());
         costoTotal = costo * cantidad;
-        enc = new Encabezado_venta(venta, idcliente, d, detalle);
-        dv = new Detalle_venta(detalle, idproducto, costoTotal, cantidad);
+        enc = new Encabezado_venta(venta, idcliente, d);
+        dv = new Detalle_venta(detalle, costoTotal, cantidad,venta,idproducto);
 
         try {
             this.vvv.ingresaDatosVenta(enc);
@@ -342,6 +342,7 @@ public class Venta extends javax.swing.JFrame {
                 idproducto = Integer.parseInt(textElements[0]);
                 descripcion = textElements[2];
                 costo = Double.parseDouble(textElements[3]);
+                
             }
             jTextField7.setText(descripcion);
             double costoTotal = costo * cantidad;
@@ -359,6 +360,11 @@ public class Venta extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        fila = jTable1.rowAtPoint(evt.getPoint());                 
+         /*if (fila > -1){                          
+             jTextField1.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
+             jTextField2.setText(String.valueOf(jTable1.getValueAt(fila, 1)));
+         }*/
     }//GEN-LAST:event_jTable1MouseClicked
 
     public void cargaCombo() {

@@ -14,12 +14,14 @@ public class Detalle_venta {
     private int idproducto;
     private double costo_total;
     private int cantidadproductos;
+    private int encabezado;
 
-    public Detalle_venta(int iddetalle, int idproducto, double costo_total, int cantidadproductos) {
+    public Detalle_venta(int iddetalle, double costo_total, int cantidadproductos,int encabezado, int idproducto) {
         this.iddetalle = iddetalle;
         this.idproducto = idproducto;
         this.costo_total = costo_total;
         this.cantidadproductos = cantidadproductos;
+        this.encabezado=encabezado;
     }
 
     public int getIddetalle() {
@@ -53,5 +55,14 @@ public class Detalle_venta {
     public void setCantidadproductos(int cantidadproductos) {
         this.cantidadproductos = cantidadproductos;
     }
+
+    public int getEncabezado() {
+        return encabezado;
+    }
+
+    public void setEncabezado(int encabezado) {
+        this.encabezado = encabezado;
+    }
+    
     
 }
