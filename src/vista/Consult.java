@@ -265,7 +265,7 @@ public class Consult extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("\n6. cual es la bolsa con mayor precio");
-        dtPer = ccc.consulta5();
+        dtPer = ccc.consulta6();
         for(int i=0;i<dtPer.length;i++){
             System.out.println(dtPer[i]);
         }
@@ -276,7 +276,7 @@ public class Consult extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("\n7.- Cuantos productos compro el cliente Diana ");
-        dtPer = ccc.consulta5();
+        dtPer = ccc.consulta7();
         for(int i=0;i<dtPer.length;i++){
             System.out.println(dtPer[i]);
         }
@@ -287,7 +287,7 @@ public class Consult extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("\n8.-Cuantos productos tienen herraje de plata");
-        dtPer = ccc.consulta5();
+        dtPer = ccc.consulta8();
         for(int i=0;i<dtPer.length;i++){
             System.out.println(dtPer[i]);
         }
@@ -298,7 +298,7 @@ public class Consult extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText("\n9.- CUAL ES LA BOLSA MAS PEQUEÑA (ALTURA MAS PEQUEÑA) ");
-        dtPer = ccc.consulta5();
+        dtPer = ccc.consulta9();
         for(int i=0;i<dtPer.length;i++){
             System.out.println(dtPer[i]);
         }
@@ -308,7 +308,13 @@ public class Consult extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        jTextArea1.setText("\n10.- Cantidad de productos vendidos proyectar el estatus, la cantidad ");
+        jTextArea1.setText("\n10.- Cantidad de productos disponibles proyectar el estatus, la cantidad ");
+        dtPer = ccc.consulta10();
+        for(int i=0;i<dtPer.length;i++){
+            System.out.println(dtPer[i]);
+        }
+        String cadena="Estatus: "+ dtPer[0]+"\n"+"Cantidad: "+dtPer[1];
+        jTextArea2.setText(cadena);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     /**

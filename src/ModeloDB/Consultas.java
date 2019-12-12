@@ -203,7 +203,7 @@ select idmodelo, precio
             "idmodelo, precio" +
             " FROM modelo" +
             " order by precio desc"+
-            " limit 3;");
+            " limit 1;");
          ResultSet res = pstm.executeQuery();
          int i = 0;
          while(res.next()){
@@ -255,6 +255,7 @@ having c.nombre='Diana';
             data[3] = ap2;
             data[4] = cant;
             i++;
+            System.out.println("aqui ando");
          }
          res.close();
           }catch(SQLException e){
@@ -343,7 +344,7 @@ PROYECTAR EL ID DEL MODELO, MEDIDAS, ID ESTATUS
     return data;
     }
 
-    public void consulta10() {
+    public String[] consulta10() {
         /*
         10.- Cantidad de productos vendidos proyectar el estatus, la cantidad 
 
@@ -352,7 +353,35 @@ select es.tipo as Estatus, count(p.idstatus) as Cantidad
 	inner join producto p on es.idstatus=p.idstatus
 	group by es.idstatus
 	having es.tipo like 'vendido';
+        
+        select es.tipo as Estatus, sum(p.productos_disponibles) as Cantidad
+	from estatus es
+	inner join producto p on es.idstatus=p.idstatus
+	group by es.tipo
+	having es.tipo like 'disponible';
          */
+        String[] data = new String[2];
+        try{    
+         PreparedStatement pstm = con.getConnection().prepareStatement("SELECT " +
+            "es.tipo as Estatus, sum(p.productos_disponibles) as Cantidad" +
+            " FROM estatus es" +
+            " inner join producto p on es.idstatus=p.idstatus"+
+            " group by es.tipo"+
+            " having es.tipo like 'disponible'; ");
+         ResultSet res = pstm.executeQuery();
+         int i = 0;
+         while(res.next()){
+            String idCli = res.getString("Estatus");
+            String nombre = res.getString("Cantidad");
+            data[0] = idCli;            
+            data[1] = nombre;
+            i++;
+         }
+         res.close();
+          }catch(SQLException e){
+         System.out.println(e);
+    }
+    return data;
     }
 
 }

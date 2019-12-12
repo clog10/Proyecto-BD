@@ -136,7 +136,7 @@ public class VentaDB {
         return data;
     }
 
-    public void updateCliente(String id, String nombre, String ap1, String ap2, String rfc, String correo) {
+    public void updateVenta(String id, String nombre, String ap1, String ap2, String rfc, String correo) {
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("update cliente "
                     + "set idcliente = ? ,"
@@ -170,7 +170,7 @@ public class VentaDB {
     where encabezado_venta.detalle_venta=9;*/
     public void deleteVenta(int cod) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("delete from encabezado_venta where idencabezado_venta = ?");
+            PreparedStatement pstm = con.getConnection().prepareStatement("DELETE en, det FROM encabezado_venta AS en INNER JOIN detalle_venta AS det WHERE det.iddetalle=en.detalle_venta AND en.idencabezado_venta = ?");
             pstm.setInt(1, cod);
             pstm.execute();
             pstm.close();
@@ -180,7 +180,7 @@ public class VentaDB {
         }
     }
     
-    public void deleteDetalle(int cod) {
+    /*public void deleteDetalle(int cod) {
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("delete from detalle_venta where iddetalle = ?");
             pstm.setInt(1, cod);
@@ -190,7 +190,7 @@ public class VentaDB {
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }
+    }*/
 
     public List<Clientes> listClientes() {
 
