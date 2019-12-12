@@ -71,6 +71,11 @@ public class Producto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Producto"));
@@ -278,7 +283,13 @@ public class Producto extends javax.swing.JFrame {
             updateTabla();
             fila = -1;
     }//GEN-LAST:event_jButton3ActionPerformed
+
     }
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        fila = jTable1.rowAtPoint(evt.getPoint()); 
+    }//GEN-LAST:event_jTable1MouseClicked
+    
 
     /**
      * @param args the command line arguments

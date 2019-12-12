@@ -90,6 +90,11 @@ public class Modelo extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Modelo"));
@@ -323,6 +328,11 @@ public class Modelo extends javax.swing.JFrame {
         this.md.updateModelo(id,imagen,color,material,medidas,herraje,precio);
         updateTabla();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        fila = jTable1.rowAtPoint(evt.getPoint()); 
+    }//GEN-LAST:event_jTable1MouseClicked
 
     
     /**
