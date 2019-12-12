@@ -13,6 +13,7 @@ import modelo.Clientes;
 import modelo.conectate;
 import modelo.Detalle_venta;
 import modelo.Encabezado_venta;
+import modelo.Productos;
 
 /**
  *
@@ -192,8 +193,6 @@ public class VentaDB {
 
     public List<Clientes> listClientes() {
 
-        String consultaSQL = "Select * from cliente;";
-
         List<Clientes> clientes = new ArrayList<Clientes>();
 
         try {
@@ -212,9 +211,39 @@ public class VentaDB {
             }
 
         } catch (SQLException exception) {
-            System.err.println("Error al CARGAR DATOS (Libro)" + exception);
+            System.err.println("Error al CARGAR DATOS (Cliente)" + exception);
         }
         return clientes;
     }
+    
+    public List<Productos> listProductos() {
+
+        List<Productos> productos = new ArrayList<Productos>();
+
+        try {
+            PreparedStatement ps = con.getConnection().prepareStatement("Select * from producto;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Productos l= new Productos();
+                l.setIdproducto(rs.getInt("idproducto"));
+                l.setIdmodelo(rs.getInt("idmodelo"));
+                l.setDescripcion(rs.getString("descripcion"));
+                l.setP_venta_publico(rs.getDouble("p_venta_publico"));
+                l.setProductos_disponibles(rs.getInt("productos_disponibles"));
+                l.setDescuento(rs.getInt("descuento"));
+                l.setIdstatus(rs.getInt("idstatus"));
+                productos.add(l);
+            }
+
+        } catch (SQLException exception) {
+            System.err.println("Error al CARGAR DATOS (Productos)" + exception);
+        }
+        return productos;
+    }
 }
+
+
+
+
 

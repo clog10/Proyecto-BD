@@ -12,14 +12,21 @@ package modelo;
 public class Productos {
     private int idproducto;
     private int idmodelo;
+    private String descripcion;
     private double p_venta_publico;
     private int productos_disponibles;
     private int descuento;
     private int idstatus;
+    
 
-    public Productos(int idproducto, int idmodelo, double p_venta_publico, int productos_disponibles, int descuento, int idstatus) {
+    public Productos() {
+    }
+    
+    public Productos(int idproducto, int idmodelo, double p_venta_publico, 
+                     String descripcion,int productos_disponibles, int descuento, int idstatus) {
         this.idproducto = idproducto;
         this.idmodelo = idmodelo;
+        this.descripcion=descripcion;
         this.p_venta_publico = p_venta_publico;
         this.productos_disponibles = productos_disponibles;
         this.descuento = descuento;
@@ -73,5 +80,21 @@ public class Productos {
     public void setIdstatus(int idstatus) {
         this.idstatus = idstatus;
     }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return  "" + idproducto + "," + idmodelo + "," + descripcion + "," + p_venta_publico + "," + productos_disponibles + "," + descuento + "," + idstatus ;
+    }
+    
+    
+    
     
 }
