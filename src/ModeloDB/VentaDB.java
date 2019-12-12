@@ -48,7 +48,7 @@ public class VentaDB {
             pstm.close();
 
         } catch (Exception ex) {
-            System.out.println("ERROR AL INTRODUCIR DATOS DEL CLIENTE");
+            System.out.println("ERROR AL INTRODUCIR DATOS DEL Encabezado");
         }
     }
 
@@ -65,23 +65,10 @@ public class VentaDB {
             pstm.close();
 
         } catch (Exception ex) {
-            System.out.println("ERROR AL INTRODUCIR DATOS DEL CLIENTE");
+            System.out.println("ERROR AL INTRODUCIR DATOS DEL detalle");
         }
     }
 
-    /*   
-    public void deleteCliente(int cod){  
-                try {                
-                    PreparedStatement pstm = con.getConnection().prepareStatement("delete from cliente where idcliente = ?");            
-                    pstm.setInt(1, cod);                   
-                    pstm.execute();
-                    pstm.close();            
-                }catch(SQLException e){
-                System.out.println(e);
-                }            
-       }
-
-     */
     public Object[][] getDatos() {
         //DateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
 
@@ -104,7 +91,8 @@ public class VentaDB {
                     + "dbproyecto.cliente,dbproyecto.producto\n"
                     + "    where encabezado_venta.detalle_venta=detalle_venta.iddetalle &&\n"
                     + "			dbproyecto.encabezado_venta.idcliente=dbproyecto.cliente.idcliente&&\n"
-                    + "            dbproyecto.detalle_venta.idproducto=dbproyecto.producto.idproducto; ");
+                    + "            dbproyecto.detalle_venta.idproducto=dbproyecto.producto.idproducto"
+                    + "             order by dbproyecto.encabezado_venta.idencabezado_venta; ");
             ResultSet res = pstm.executeQuery();
             int i = 0;
             while (res.next()) {
@@ -182,10 +170,23 @@ public class VentaDB {
     where encabezado_venta.detalle_venta=9;*/
     public void deleteVenta(int cod) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("delete from encabezado_venta,detalle_venta where detalle_venta,detalleventa.iddetalle=?");
+            PreparedStatement pstm = con.getConnection().prepareStatement("delete from encabezado_venta where idencabezado_venta = ?");
             pstm.setInt(1, cod);
             pstm.execute();
             pstm.close();
+            System.out.println("Encabezado eliminado");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteDetalle(int cod) {
+        try {
+            PreparedStatement pstm = con.getConnection().prepareStatement("delete from detalle_venta where iddetalle = ?");
+            pstm.setInt(1, cod);
+            pstm.execute();
+            pstm.close();
+                    System.out.println("detalle eliminado");
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -242,6 +243,13 @@ public class VentaDB {
         return productos;
     }
 }
+
+
+
+
+
+
+
 
 
 
