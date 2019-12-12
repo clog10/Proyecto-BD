@@ -18,6 +18,7 @@ import modelo.Productos;
 /**
  * @author Clog_10
  */
+
 public class Venta extends javax.swing.JFrame {
 
     VentaDB vvv;
@@ -25,12 +26,14 @@ public class Venta extends javax.swing.JFrame {
     Detalle_venta dv;
 
     Object[][] dtPer;
+    Object[][] dtPer2;
     int fila = -1;
 
     public Venta() {
         initComponents();
         vvv = new VentaDB();
-        updateTabla();
+        updateTablaEncabezado();
+        updateTablaDetalle();
         cargaCombo();
         cargaCombo2();
     }
@@ -63,6 +66,8 @@ public class Venta extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -201,7 +206,7 @@ public class Venta extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +246,7 @@ public class Venta extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEliminar)
                     .addComponent(jButtonModificar)
@@ -249,25 +254,41 @@ public class Venta extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
         );
@@ -284,7 +305,7 @@ public class Venta extends javax.swing.JFrame {
            // int detalle = Integer.parseInt((String) jTable1.getValueAt(fila, 2));
             vvv.deleteVenta(id);
             //vvv.deleteDetalle(detalle);
-            updateTabla();
+            //updateTabla();
             fila = -1;
         }
 
@@ -326,7 +347,7 @@ public class Venta extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(Venta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        updateTabla();
+        //updateTabla();
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -381,15 +402,24 @@ public class Venta extends javax.swing.JFrame {
         }
     }
 
-    private void updateTabla() {
-        String[] columNames = {"id Encabezado", "Fecha", "id Detalle", "id Producto", "Descripcion", "Precio producto", "Cantidad de Productos", "Costo total", "idcliente",
-            "nombre", "ap1", "ap2", "rfc", "correo"};
+    private void updateTablaEncabezado() {
+        String[] columNames = {"id Encabezado", "Fecha", "id Cliente","nombre","apellido 1","apellido 2","rfc","correo"};
         // se utiliza la funcion
-        dtPer = vvv.getDatos();
-        System.out.println(vvv.getDatos());
+        dtPer = vvv.getDatosEncabezado();
+        //System.out.println(vvv.getDatosEncabezado());
         // se colocan los datos en la tabla
         DefaultTableModel datos = new DefaultTableModel(dtPer, columNames);
         jTable1.setModel(datos);
+    }
+    
+    private void updateTablaDetalle() {
+        String[] columNames = {"id Encabezado", "id Detalle", "id Producto", "Descripcion", "Precio producto", "Cantidad de Productos", "Costo total"};
+        // se utiliza la funcion
+        dtPer2 = vvv.getDatosDetalle();
+        //System.out.println(vvv.getDatos());
+        // se colocan los datos en la tabla
+        DefaultTableModel datos = new DefaultTableModel(dtPer2, columNames);
+        jTable2.setModel(datos);
     }
 
     public static void main(String args[]) {
@@ -429,7 +459,9 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

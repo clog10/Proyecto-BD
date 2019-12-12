@@ -70,7 +70,7 @@ public class VentaDB {
         }
     }
 
-    public Object[][] getDatos() {
+    public Object[][] getDatosEncabezado() {
         //DateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
 
         int registros = 0;
@@ -85,47 +85,76 @@ public class VentaDB {
             System.out.println(e);
         }
 
-        Object[][] data = new String[registros][14];
+        Object[][] data = new String[registros][8];
         //realizamos la consulta sql y llenamos los datos en "Object"
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement(" select * from dbproyecto2.detalle_venta,dbproyecto2.encabezado_venta,"
-                    + "dbproyecto2.cliente,dbproyecto2.producto\n"
-                    + "    where dbproyecto2.detalle_venta.idencabezado=dbproyecto2.encabezado_venta.idencabezado_venta &&\n"
-                    + "			dbproyecto2.encabezado_venta.idcliente=dbproyecto2.cliente.idcliente&&\n"
-                    + "            dbproyecto2.detalle_venta.idproducto=dbproyecto2.producto.idproducto"
-                    + "             order by dbproyecto2.encabezado_venta.idencabezado_venta; ");
+            PreparedStatement pstm = con.getConnection().prepareStatement("  select * from encabezado_venta,cliente where encabezado_venta.idcliente=cliente.idcliente; ");
             ResultSet res = pstm.executeQuery();
             int i = 0;
             while (res.next()) {
                 String idenc = res.getString("idencabezado_venta");
                 String fecha = res.getDate("fecha").toString();
-                String detalle = res.getString("iddetalle");
                 data[i][0] = idenc;
                 data[i][1] = fecha;
-                data[i][2] = detalle;
-                String idproducto = res.getString("idproducto");
-                String desc = res.getString("descripcion");
-                String precio = res.getString("p_venta_publico");
-                String costo = res.getString("costo_total");
-                String cant = res.getString("cantidadproductos");
-                data[i][3] = idproducto;
-                data[i][4] = desc;
-                data[i][5] = precio;
-                data[i][6] = cant;
-                data[i][7] = costo;
-
                 String idcli = res.getString("idcliente");
                 String nombre = res.getString("nombre");
                 String ap1 = res.getString("ap1");
                 String ap2 = res.getString("ap2");
                 String rfc = res.getString("rfc");
                 String correo = res.getString("correo");
-                data[i][8] = idcli;
-                data[i][9] = nombre;
-                data[i][10] = ap1;
-                data[i][11] = ap2;
-                data[i][12] = rfc;
-                data[i][13] = correo;
+                data[i][2] = idcli;
+                data[i][3] = nombre;
+                data[i][4] = ap1;
+                data[i][5] = ap2;
+                data[i][6] = rfc;
+                data[i][7] = correo;
+
+                i++;
+
+            }
+            res.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return data;
+    }
+    
+    public Object[][] getDatosDetalle() {
+        //DateFormat fecha=new SimpleDateFormat("dd/MM/yyyy");
+
+        int registros = 0;
+        //obtenemos la cantidad de registros existentes en la tabla
+        try {
+            PreparedStatement pstm = con.getConnection().prepareStatement("SELECT count(iddetalle) as total FROM detalle_venta ");
+            try (ResultSet res = pstm.executeQuery()) {
+                res.next();
+                registros = res.getInt("total");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        Object[][] data = new String[registros][8];
+        //realizamos la consulta sql y llenamos los datos en "Object"
+        try {
+            PreparedStatement pstm = con.getConnection().prepareStatement(" select * from detalle_venta, producto where detalle_venta.idproducto=producto.idproducto;  ");
+            ResultSet res = pstm.executeQuery();
+            int i = 0;
+            while (res.next()) {
+                String idenc = res.getString("idencabezado");
+                String detalle = res.getString("iddetalle");
+                String producto = res.getString("idproducto");
+                data[i][0] = idenc;
+                data[i][1] = detalle;
+                data[i][2] = producto;
+                String desc = res.getString("descripcion");
+                String precio = res.getString("p_venta_publico");
+                String cant = res.getString("cantidadproductos");
+                String costo = res.getString("costo_total");
+                data[i][4] = desc;
+                data[i][5] = precio;
+                data[i][6] = cant;
+                data[i][7] = costo;
 
                 i++;
 
