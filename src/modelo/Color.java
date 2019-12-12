@@ -18,6 +18,11 @@ public class Color {
         this.color = color;
     }
 
+    public Color() {
+    }
+
+    
+   
     public int getIdcolor() {
         return idcolor;
     }
@@ -33,5 +38,12 @@ public class Color {
     public void setColor(String color) {
         this.color = color;
     }
+
+    @Override
+    public String toString() {
+        return  "" + idcolor + "," + color;
+    }
+    
+    
     
 }

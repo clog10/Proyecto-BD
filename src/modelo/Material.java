@@ -18,6 +18,11 @@ public class Material {
         this.tipo = tipo;
     }
 
+    public Material() {
+    }
+
+    
+    
     public int getIdmaterial() {
         return idmaterial;
     }
@@ -33,5 +38,12 @@ public class Material {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "" + idmaterial + "," + tipo ;
+    }
+    
+    
     
 }

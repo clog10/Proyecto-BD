@@ -1,5 +1,5 @@
-
 package vista;
+
 import com.jtattoo.plaf.fast.FastLookAndFeel;
 import java.util.Properties;
 import javax.swing.UIManager;
@@ -18,18 +18,18 @@ import modelo.Productos;
 /**
  * @author Clog_10
  */
-
 public class Venta extends javax.swing.JFrame {
-    VentaDB vvv; 
+
+    VentaDB vvv;
     Encabezado_venta enc;
     Detalle_venta dv;
-    
+
     Object[][] dtPer;
-        int fila = -1;
+    int fila = -1;
 
     public Venta() {
         initComponents();
-        vvv=new VentaDB();
+        vvv = new VentaDB();
         updateTabla();
         cargaCombo();
         cargaCombo2();
@@ -81,6 +81,11 @@ public class Venta extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -272,51 +277,49 @@ public class Venta extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.out.println("antes");
-        if (fila > -1){
+        if (fila > -1) {
             //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
             System.out.println("dentro");
             int id = Integer.parseInt((String) jTable1.getValueAt(fila, 0));
-            int detalle=Integer.parseInt((String)jTable1.getValueAt(fila, 2));
+            int detalle = Integer.parseInt((String) jTable1.getValueAt(fila, 2));
             vvv.deleteVenta(id);
             vvv.deleteDetalle(detalle);
             updateTabla();
-            fila=-1;
+            fila = -1;
         }
-        System.out.println("despues");
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here: 274 111 9613
-        int idproducto=0;
-        int idcliente=0;
-        double costoTotal=0;
-         String descripcion="";
-         double costo=0.0;
-        int venta=Integer.parseInt(jTextField1.getText());
+        int idproducto = 0;
+        int idcliente = 0;
+        double costoTotal = 0;
+        String descripcion = "";
+        double costo = 0.0;
+        int venta = Integer.parseInt(jTextField1.getText());
         //double costo=Double.parseDouble(jTextField3.getText());
-        int cantidad=Integer.parseInt(jTextField4.getText());
+        int cantidad = Integer.parseInt(jTextField4.getText());
 
-        int detalle=Integer.parseInt(jTextField6.getText());
+        int detalle = Integer.parseInt(jTextField6.getText());
         SimpleDateFormat da = new SimpleDateFormat("dd-MM-yyyy");
         String d = da.format(jDateChooser1.getDate());
-        String prr=(String) jComboBox2.getSelectedItem();
+        String prr = (String) jComboBox2.getSelectedItem();
         String[] textElements = prr.split(",");
-        for(int i=0; i<textElements.length; i++) {
-        idproducto=Integer.parseInt(textElements[0]);
-        
-                }
-        String prr2=(String) jComboBox1.getSelectedItem();
+        for (int i = 0; i < textElements.length; i++) {
+            idproducto = Integer.parseInt(textElements[0]);
+
+        }
+        String prr2 = (String) jComboBox1.getSelectedItem();
         String[] textElements2 = prr2.split(",");
-        for(int i=0; i<textElements2.length; i++) {
-        idcliente=Integer.parseInt(textElements2[0]);
-                }
-        costo=Double.parseDouble(jTextField3.getText());
-        costoTotal=costo*cantidad;
-        enc=new Encabezado_venta(venta,idcliente,d,detalle);
-        dv=new Detalle_venta(detalle,idproducto,costoTotal,cantidad);
-        
+        for (int i = 0; i < textElements2.length; i++) {
+            idcliente = Integer.parseInt(textElements2[0]);
+        }
+        costo = Double.parseDouble(jTextField3.getText());
+        costoTotal = costo * cantidad;
+        enc = new Encabezado_venta(venta, idcliente, d, detalle);
+        dv = new Detalle_venta(detalle, idproducto, costoTotal, cantidad);
+
         try {
             this.vvv.ingresaDatosVenta(enc);
             this.vvv.ingresaDatosDetalle(dv);
@@ -328,64 +331,68 @@ public class Venta extends javax.swing.JFrame {
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-         int idproducto=0;
-         String descripcion="";
-         double costo=0.0;
-         try{
-         int cantidad=Integer.parseInt(jTextField4.getText());
-        String prr=(String) jComboBox2.getSelectedItem();
-        String[] textElements = prr.split(",");
-        for(int i=0; i<textElements.length; i++) {
-        idproducto=Integer.parseInt(textElements[0]);
-        descripcion=textElements[2];
-        costo=Double.parseDouble(textElements[3]);
+        int idproducto = 0;
+        String descripcion = "";
+        double costo = 0.0;
+        try {
+            int cantidad = Integer.parseInt(jTextField4.getText());
+            String prr = (String) jComboBox2.getSelectedItem();
+            String[] textElements = prr.split(",");
+            for (int i = 0; i < textElements.length; i++) {
+                idproducto = Integer.parseInt(textElements[0]);
+                descripcion = textElements[2];
+                costo = Double.parseDouble(textElements[3]);
+            }
+            jTextField7.setText(descripcion);
+            double costoTotal = costo * cantidad;
+            jTextField3.setText("" + costo);
+            jTextField2.setText("" + costoTotal);
+        } catch (Exception e) {
+
         }
-        jTextField7.setText(descripcion);
-        double costoTotal=costo*cantidad;
-        jTextField3.setText(""+costo);
-        jTextField2.setText(""+costoTotal);
-         }catch(Exception e){
-             
-         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
-        
-    public void cargaCombo(){
-        ArrayList <Clientes> c=(ArrayList <Clientes>) vvv.listClientes();
-        for(Clientes ccc:c){
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    public void cargaCombo() {
+        ArrayList<Clientes> c = (ArrayList<Clientes>) vvv.listClientes();
+        for (Clientes ccc : c) {
             jComboBox1.addItem(ccc.toString());
         }
     }
-    
-    public void cargaCombo2(){
-        ArrayList <Productos> c=(ArrayList <Productos>) vvv.listProductos();
-        for(Productos ccc:c){
-            jComboBox2.addItem(ccc.toString()); 
+
+    public void cargaCombo2() {
+        ArrayList<Productos> c = (ArrayList<Productos>) vvv.listProductos();
+        for (Productos ccc : c) {
+            jComboBox2.addItem(ccc.toString());
         }
     }
-    
-     private void updateTabla(){             
-        String[] columNames = {"id Encabezado","Fecha","id Detalle","id Producto","Descripcion","Precio producto","Cantidad de Productos","Costo total","idcliente",
-                                    "nombre","ap1","ap2","rfc","correo"};  
+
+    private void updateTabla() {
+        String[] columNames = {"id Encabezado", "Fecha", "id Detalle", "id Producto", "Descripcion", "Precio producto", "Cantidad de Productos", "Costo total", "idcliente",
+            "nombre", "ap1", "ap2", "rfc", "correo"};
         // se utiliza la funcion
         dtPer = vvv.getDatos();
         System.out.println(vvv.getDatos());
         // se colocan los datos en la tabla
-        DefaultTableModel datos = new DefaultTableModel(dtPer,columNames);                        
-        jTable1.setModel(datos); 
+        DefaultTableModel datos = new DefaultTableModel(dtPer, columNames);
+        jTable1.setModel(datos);
     }
 
     public static void main(String args[]) {
-         try {
-           Properties props = new Properties();
+        try {
+            Properties props = new Properties();
             FastLookAndFeel.setCurrentTheme(props);
             UIManager.setLookAndFeel("com.jtattoo.plaf.fast.FastLookAndFeel");
-        } catch (Exception e){
-            
+        } catch (Exception e) {
+
         }
         //</editor-fold>
 
@@ -396,8 +403,7 @@ public class Venta extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -426,4 +432,3 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
-

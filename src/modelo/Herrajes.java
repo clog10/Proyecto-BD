@@ -13,6 +13,11 @@ public class Herrajes {
     private int idherraje;
     private String tipo;
 
+    public Herrajes() {
+    }
+
+    
+    
     public Herrajes(int idherraje, String tipo) {
         this.idherraje = idherraje;
         this.tipo = tipo;
@@ -33,5 +38,12 @@ public class Herrajes {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "" + idherraje + "," + tipo;
+    }
+    
+    
     
 }

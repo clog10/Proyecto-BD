@@ -7,8 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Color;
+import modelo.Herrajes;
+import modelo.Material;
+import modelo.Medida;
 import modelo.Modelos;
 import modelo.conectate;
+import vista.Colores;
 
 /**
  *
@@ -53,8 +57,6 @@ public void deleteModelo(int cod){
             }            
    }
 
-    
-    
     public Object [][] getDatos(){
       int registros = 0;
       //obtenemos la cantidad de registros existentes en la tabla
@@ -126,7 +128,106 @@ public void deleteModelo(int cod){
          System.out.println(e);
       }
    }
+    
+    public List<Color> listColores() {
+
+        List<Color> color = new ArrayList<Color>();
+
+        try {
+            PreparedStatement ps = con.getConnection().prepareStatement("Select * from colores;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Color l= new Color(); 
+                l.setIdcolor(rs.getInt("idcolor"));
+                l.setColor(rs.getString("color"));
+
+                color.add(l);
+            }
+
+        } catch (SQLException exception) {
+            System.err.println("Error al CARGAR DATOS (colores)" + exception);
+        }
+        return color;
+    }
+    
+    public List<Material> listMateriales() {
+
+        List<Material> mat = new ArrayList<Material>();
+
+        try {
+            PreparedStatement ps = con.getConnection().prepareStatement("Select * from material;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Material l= new Material();  
+                l.setIdmaterial(rs.getInt("idmaterial"));
+                l.setTipo(rs.getString("tipo"));
+
+                mat.add(l);
+            }
+
+        } catch (SQLException exception) {
+            System.err.println("Error al CARGAR DATOS (materiales)" + exception);
+        }
+        return mat; 
+    }
+    
+    public List<Medida> listMedidas() {
+
+        List<Medida> mat = new ArrayList<Medida>();
+
+        try {
+            PreparedStatement ps = con.getConnection().prepareStatement("Select * from medidas;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Medida l= new Medida();  
+                l.setIdmedida(rs.getInt("idmedida"));
+                l.setAncho(rs.getInt("ancho"));
+                l.setAlto(rs.getInt("alto"));
+                l.setFondo(rs.getInt("fondo")); 
+
+                mat.add(l);
+            }
+
+        } catch (SQLException exception) {
+            System.err.println("Error al CARGAR DATOS (medidas)" + exception);
+        }
+        return mat; 
+    }
+    
+    public List<Herrajes> listHerrajes() {
+
+        List<Herrajes> mat = new ArrayList<Herrajes>();
+
+        try {
+            PreparedStatement ps = con.getConnection().prepareStatement("Select * from herraje;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Herrajes l= new Herrajes();  
+                l.setIdherraje(rs.getInt("idherraje"));
+                l.setTipo(rs.getString("tipo"));
+
+                mat.add(l);
+            }
+
+        } catch (SQLException exception) {
+            System.err.println("Error al CARGAR DATOS (herrajes)" + exception);
+        }
+        return mat; 
+    }
+    
 }
+
+
+
+
+
+
+
+
 
 
 

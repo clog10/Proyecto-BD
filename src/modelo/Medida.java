@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 /**
  *
  * @author mac
  */
+
 public class Medida {
     private int idmedida;
     private int ancho;
@@ -21,6 +18,10 @@ public class Medida {
         this.alto = alto;
         this.fondo = fondo;
     }
+
+    public Medida() {
+    }
+    
 
     public int getIdmedida() {
         return idmedida;
@@ -53,5 +54,12 @@ public class Medida {
     public void setFondo(int fondo) {
         this.fondo = fondo;
     }
+
+    @Override
+    public String toString() {
+        return "" + idmedida + "," + ancho + "," + alto + "," + fondo;
+    }
+    
+    
     
 }
