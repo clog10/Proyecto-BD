@@ -209,7 +209,7 @@ public class Consult extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        jTextArea1.setText("\n1.-Cuantas bolsas existen de color amarillo");
+        jTextArea1.setText("\n1.-Cuantas bolsas existen de color ámbar");
         dtPer = ccc.consulta1();
         for(int i=0;i<dtPer.length;i++){
             System.out.println(dtPer[i]);

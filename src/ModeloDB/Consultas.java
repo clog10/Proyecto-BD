@@ -225,21 +225,21 @@ select idmodelo, precio
         7.- Cuantos productos compro el cliente carlos 
 proyectar nombre, idcliente y cantidad  
 
-select c.idcliente, c.nombre, c.ap1, c.ap2, d.cantidadproductos
+select c.idcliente, c.nombre, c.ap1, c.ap2, sum(d.cantidadproductos)
 from cliente c
 inner join encabezado_venta en on c.idcliente=en.idcliente
-inner join detalle_venta d on en.detalle_venta =d.iddetalle
-group by c.idcliente, c.nombre, c.ap1, c.ap2, d.cantidadproductos
+inner join detalle_venta d on d.idencabezado =en.idencabezado_venta
+group by c.idcliente, c.nombre, c.ap1, c.ap2
 having c.nombre='Diana';
          */
         String[] data = new String[5];
         try{    
          PreparedStatement pstm = con.getConnection().prepareStatement("SELECT " +
-            "c.idcliente, c.nombre, c.ap1, c.ap2, d.cantidadproductos" +
+            "c.idcliente, c.nombre, c.ap1, c.ap2, sum(d.cantidadproductos) as cantidadproductos" +
             " FROM cliente c" +
             " inner join encabezado_venta en on c.idcliente=en.idcliente"+
-            " inner join detalle_venta d on en.detalle_venta =d.iddetalle"+
-            " group by c.idcliente, c.nombre, c.ap1, c.ap2, d.cantidadproductos"+
+            " inner join detalle_venta d on d.idencabezado =en.idencabezado_venta"+
+            " group by c.idcliente, c.nombre, c.ap1, c.ap2"+
             " having c.nombre='Diana';");
          ResultSet res = pstm.executeQuery();
          int i = 0;
@@ -248,7 +248,7 @@ having c.nombre='Diana';
             String nombre = res.getString("c.nombre");
             String ap1 = res.getString("c.ap1");
             String ap2 = res.getString("c.ap2");
-            String cant = res.getString("d.cantidadproductos");
+            String cant = res.getString("cantidadproductos");
             data[0] = idCli;            
             data[1] = nombre;
             data[2] = ap1;
