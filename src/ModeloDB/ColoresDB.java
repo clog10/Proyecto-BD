@@ -19,13 +19,13 @@ public class ColoresDB {
 
     public void ingresaDatosColor(Color c) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO colores (idcolor, nombre)"
+            PreparedStatement pstm = con.getConnection().prepareStatement("INSERT INTO colores (idcolor, color)"
                     + "VALUES(?,?)");
             pstm.setInt(1, c.getIdcolor());
             pstm.setString(2, c.getColor());
 
-            //int count = pstm.executeUpdate();
-            //System.out.println("Se han insertado: " + count);
+            int count = pstm.executeUpdate();
+            System.out.println("Se han insertado: " + count);
             pstm.close();
 
         } catch (Exception ex) {

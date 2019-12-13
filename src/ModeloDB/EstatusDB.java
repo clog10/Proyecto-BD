@@ -27,8 +27,8 @@ public class EstatusDB {
             pstm.setInt(1, c.getIdstatus());
             pstm.setString(2, c.getTipo());
 
-            //int count = pstm.executeUpdate();
-            //System.out.println("Se han insertado: " + count);
+            int count = pstm.executeUpdate();
+            System.out.println("Se han insertado: " + count);
             pstm.close();
 
         } catch (Exception ex) {

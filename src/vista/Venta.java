@@ -46,26 +46,26 @@ public class Venta extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldIDVENTA = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldCOSTO = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTextFieldCANTPRODUCT = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jTextFieldIDDETALLE = new javax.swing.JTextField();
         jButtonEliminar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButtonModificar = new javax.swing.JButton();
         jButtonAgregar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        jTextFieldDESCRIP = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldCOSTTOTAL = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -103,7 +103,7 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel3.setText("Costo");
 
-        jTextField3.setEditable(false);
+        jTextFieldCOSTO.setEditable(false);
 
         jLabel4.setText("Cantidad de Productos");
 
@@ -136,7 +136,7 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel9.setText("Descripción");
 
-        jTextField7.setEditable(false);
+        jTextFieldDESCRIP.setEditable(false);
 
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +146,7 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel5.setText("Costo total");
 
-        jTextField2.setEditable(false);
+        jTextFieldCOSTTOTAL.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,13 +165,13 @@ public class Venta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIDVENTA, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(59, 59, 59)
                             .addComponent(jLabel4))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldCOSTO, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(121, 121, 121)
                             .addComponent(jButtonAgregar))
@@ -182,7 +182,7 @@ public class Venta extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldDESCRIP, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(128, 128, 128)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -190,7 +190,7 @@ public class Venta extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(24, 24, 24)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldIDDETALLE, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(38, 38, 38)
@@ -204,8 +204,8 @@ public class Venta extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldCOSTTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jTextFieldCANTPRODUCT, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(249, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -216,9 +216,9 @@ public class Venta extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIDVENTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldCANTPRODUCT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -230,7 +230,7 @@ public class Venta extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextFieldCOSTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -239,13 +239,13 @@ public class Venta extends javax.swing.JFrame {
                         .addGap(37, 37, 37)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIDDETALLE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCOSTTOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDESCRIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEliminar)
@@ -305,7 +305,8 @@ public class Venta extends javax.swing.JFrame {
            // int detalle = Integer.parseInt((String) jTable1.getValueAt(fila, 2));
             vvv.deleteVenta(id);
             //vvv.deleteDetalle(detalle);
-            //updateTabla();
+            updateTablaEncabezado();
+            updateTablaDetalle();
             fila = -1;
         }
 
@@ -318,11 +319,11 @@ public class Venta extends javax.swing.JFrame {
         double costoTotal = 0;
         String descripcion = "";
         double costo = 0.0;
-        int venta = Integer.parseInt(jTextField1.getText());
+        int venta = Integer.parseInt(jTextFieldIDVENTA.getText());
         //double costo=Double.parseDouble(jTextField3.getText());
-        int cantidad = Integer.parseInt(jTextField4.getText());
+        int cantidad = Integer.parseInt(jTextFieldCANTPRODUCT.getText());
 
-        int detalle = Integer.parseInt(jTextField6.getText());
+        int detalle = Integer.parseInt(jTextFieldIDDETALLE.getText());
         SimpleDateFormat da = new SimpleDateFormat("dd-MM-yyyy");
         String d = da.format(jDateChooser1.getDate());
         String prr = (String) jComboBox2.getSelectedItem();
@@ -336,7 +337,7 @@ public class Venta extends javax.swing.JFrame {
         for (int i = 0; i < textElements2.length; i++) {
             idcliente = Integer.parseInt(textElements2[0]);
         }
-        costo = Double.parseDouble(jTextField3.getText());
+        costo = Double.parseDouble(jTextFieldCOSTO.getText());
         costoTotal = costo * cantidad;
         enc = new Encabezado_venta(venta, idcliente, d);
         dv = new Detalle_venta(detalle, costoTotal, cantidad,venta,idproducto);
@@ -357,7 +358,7 @@ public class Venta extends javax.swing.JFrame {
         String descripcion = "";
         double costo = 0.0;
         try {
-            int cantidad = Integer.parseInt(jTextField4.getText());
+            int cantidad = Integer.parseInt(jTextFieldCANTPRODUCT.getText());
             String prr = (String) jComboBox2.getSelectedItem();
             String[] textElements = prr.split(",");
             for (int i = 0; i < textElements.length; i++) {
@@ -366,10 +367,10 @@ public class Venta extends javax.swing.JFrame {
                 costo = Double.parseDouble(textElements[3]);
                 
             }
-            jTextField7.setText(descripcion);
+            jTextFieldDESCRIP.setText(descripcion);
             double costoTotal = costo * cantidad;
-            jTextField3.setText("" + costo);
-            jTextField2.setText("" + costoTotal);
+            jTextFieldCOSTO.setText("" + costo);
+            jTextFieldCOSTTOTAL.setText("" + costoTotal);
         } catch (Exception e) {
 
         }
@@ -383,10 +384,15 @@ public class Venta extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         fila = jTable1.rowAtPoint(evt.getPoint());                 
-         /*if (fila > -1){                          
-             jTextField1.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
-             jTextField2.setText(String.valueOf(jTable1.getValueAt(fila, 1)));
-         }*/
+         if (fila > -1){                          
+             jTextFieldIDVENTA.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
+             jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(fila, 1)));
+             jTextFieldCANTPRODUCT.setText(String.valueOf(jTable2.getValueAt(fila, 5)));
+             jTextFieldCOSTO.setText(String.valueOf(jTable2.getValueAt(fila, 4)));
+             jTextFieldDESCRIP.setText(String.valueOf(jTable2.getValueAt(fila, 3)));
+             jTextFieldIDDETALLE.setText(String.valueOf(jTable2.getValueAt(fila, 1)));
+             jTextFieldCOSTTOTAL.setText(String.valueOf(jTable2.getValueAt(fila, 6)));
+         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     public void cargaCombo() {
@@ -463,11 +469,11 @@ public class Venta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextFieldCANTPRODUCT;
+    private javax.swing.JTextField jTextFieldCOSTO;
+    private javax.swing.JTextField jTextFieldCOSTTOTAL;
+    private javax.swing.JTextField jTextFieldDESCRIP;
+    private javax.swing.JTextField jTextFieldIDDETALLE;
+    private javax.swing.JTextField jTextFieldIDVENTA;
     // End of variables declaration//GEN-END:variables
 }

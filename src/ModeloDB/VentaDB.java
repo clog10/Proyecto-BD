@@ -209,7 +209,7 @@ public class VentaDB {
             System.out.println(e);
         }
     }
-    
+
     /*public void deleteDetalle(int cod) {
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("delete from detalle_venta where iddetalle = ?");

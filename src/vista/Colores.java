@@ -10,6 +10,7 @@ import java.util.Properties;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import modelo.Color;
+import modelo.conectate;
 /**
  *
  * @author Clog_10
@@ -17,6 +18,7 @@ import modelo.Color;
 public class Colores extends javax.swing.JFrame {
     Color color;
     ColoresDB ccc;
+     conectate con;
     Object[][] dtPer;
         int fila = -1;
     /**
@@ -26,6 +28,10 @@ public class Colores extends javax.swing.JFrame {
         initComponents();
         ccc=new ColoresDB();
         updateTabla();
+    }
+    public void limpiaColores(){
+        this.jTextField1.setText(null);
+        this.jTextField2.setText(null);
     }
 
     /**
@@ -180,9 +186,10 @@ public class Colores extends javax.swing.JFrame {
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         // TODO add your handling code here:
          int id = Integer.parseInt(jTextField1.getText());
-        String nombre=jTextField2.getText();
-         color=new Color(id,nombre);
+        String colores=jTextField2.getText();
+         color=new Color(id,colores);
          this.ccc.ingresaDatosColor(color);
+         limpiaColores();
         updateTabla();
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
