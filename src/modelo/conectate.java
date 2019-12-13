@@ -13,7 +13,7 @@ public class conectate {
    static String bd = "dbproyecto2"; 
 
    static String login = "root"; 
-   static String password = "RA16161255"; 
+   static String password = "123456"; 
    static String url = "jdbc:mysql://localhost/"+bd; 
  
    private Connection conn = null; 

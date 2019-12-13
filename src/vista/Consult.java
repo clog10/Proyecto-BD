@@ -9,9 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
 /**
- *
  * @author Clog_10
  */
+
 public class Consult extends javax.swing.JFrame {
     Consultas ccc;
     String[] dtPer;

@@ -200,7 +200,7 @@ public class VentaDB {
     where encabezado_venta.detalle_venta=9;*/
     public void deleteVenta(int cod) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("DELETE en, det FROM encabezado_venta AS en INNER JOIN detalle_venta AS det WHERE det.iddetalle=en.detalle_venta AND en.idencabezado_venta = ?");
+            PreparedStatement pstm = con.getConnection().prepareStatement(" delete from detalle_venta where iddetalle=? limit 1;");
             pstm.setInt(1, cod);
             pstm.execute();
             pstm.close();
