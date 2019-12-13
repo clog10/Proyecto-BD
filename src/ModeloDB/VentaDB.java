@@ -204,23 +204,23 @@ public class VentaDB {
             pstm.setInt(1, cod);
             pstm.execute();
             pstm.close();
-            System.out.println("Encabezado eliminado");
+            System.out.println("detalle eliminado");
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
 
-    /*public void deleteDetalle(int cod) {
+    public void deleteEncabezado(int cod) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("delete from detalle_venta where iddetalle = ?");
+            PreparedStatement pstm = con.getConnection().prepareStatement("delete from encabezado_venta where idencabezado_venta=?");
             pstm.setInt(1, cod);
             pstm.execute();
             pstm.close();
-                    System.out.println("detalle eliminado");
+                    System.out.println("encabezado eliminado");
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }*/
+    }
 
     public List<Clientes> listClientes() {
 

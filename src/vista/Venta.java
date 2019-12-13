@@ -28,6 +28,7 @@ public class Venta extends javax.swing.JFrame {
     Object[][] dtPer;
     Object[][] dtPer2;
     int fila = -1;
+   // int fila2=-1;
 
     public Venta() {
         initComponents();
@@ -66,6 +67,7 @@ public class Venta extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<String>();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldCOSTTOTAL = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -113,7 +115,7 @@ public class Venta extends javax.swing.JFrame {
 
         jLabel8.setText("id detalle");
 
-        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setText("Eliminar Detalle");
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarActionPerformed(evt);
@@ -148,6 +150,13 @@ public class Venta extends javax.swing.JFrame {
 
         jTextFieldCOSTTOTAL.setEditable(false);
 
+        jButton1.setText("Elimina Encabezado");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -155,9 +164,11 @@ public class Venta extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonModificar)
-                .addGap(327, 327, 327)
+                .addGap(156, 156, 156)
                 .addComponent(jButtonEliminar)
-                .addGap(211, 211, 211))
+                .addGap(131, 131, 131)
+                .addComponent(jButton1)
+                .addGap(174, 174, 174))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -250,7 +261,8 @@ public class Venta extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEliminar)
                     .addComponent(jButtonModificar)
-                    .addComponent(jButtonAgregar))
+                    .addComponent(jButtonAgregar)
+                    .addComponent(jButton1))
                 .addGap(19, 19, 19))
         );
 
@@ -389,7 +401,7 @@ public class Venta extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         fila = jTable1.rowAtPoint(evt.getPoint());                 
-         if (fila > -1){                          
+        /* if (fila > -1){                          
              jTextFieldIDVENTA.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
              jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(fila, 1)));
              jTextFieldCANTPRODUCT.setText(String.valueOf(jTable2.getValueAt(fila, 5)));
@@ -397,13 +409,29 @@ public class Venta extends javax.swing.JFrame {
              jTextFieldDESCRIP.setText(String.valueOf(jTable2.getValueAt(fila, 3)));
              jTextFieldIDDETALLE.setText(String.valueOf(jTable2.getValueAt(fila, 1)));
              jTextFieldCOSTTOTAL.setText(String.valueOf(jTable2.getValueAt(fila, 6)));
-         }
+         }*/
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
-        fila = jTable1.rowAtPoint(evt.getPoint()); 
+        fila = jTable2.rowAtPoint(evt.getPoint()); 
     }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        if (fila > -1) {
+            //int codigo = String.valueOf(jTable1.getValueAt(fila, 0));    
+            System.out.println("dentro");
+            int id = Integer.parseInt((String) jTable1.getValueAt(fila, 0));
+           // int detalle = Integer.parseInt((String) jTable1.getValueAt(fila, 2));
+            vvv.deleteEncabezado(id);
+            //vvv.deleteDetalle(detalle);
+            updateTablaEncabezado();
+            updateTablaDetalle();
+            fila = -1;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void cargaCombo() {
         ArrayList<Clientes> c = (ArrayList<Clientes>) vvv.listClientes();
@@ -459,6 +487,7 @@ public class Venta extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
