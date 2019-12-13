@@ -166,26 +166,25 @@ public class VentaDB {
         return data;
     }
 
-    public void updateVenta(String id, String nombre, String ap1, String ap2, String rfc, String correo) {
+    public void updateVenta(int iddetalle, double costo_total, int cantidadproductos,int encabezado, int idproducto) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("update cliente "
-                    + "set idcliente = ? ,"
-                    + "nombre = ? ,"
-                    + "ap1 = ? ,"
-                    + "ap2 = ? "
-                    + "rfc = ? "
-                    + "correo = ? "
-                    + "where idcliente = ? ");
-            pstm.setString(1, id);
-            pstm.setString(2, nombre);
-            pstm.setString(3, ap1);
-            pstm.setString(4, ap2);
-            pstm.setString(5, rfc);
-            pstm.setString(6, correo);
+            PreparedStatement pstm = con.getConnection().prepareStatement("update detalle_venta "
+                    + "set iddetalle = ? ,"
+                    + "costo_total = ? ,"
+                    + "cantidadproductos = ? ,"
+                    + "idencabezado = ? ,"
+                    + "idproducto = ? "
+                    + "where iddetalle = ? ");
+            pstm.setInt(1, iddetalle);
+            pstm.setDouble(2, costo_total);
+            pstm.setInt(3, cantidadproductos);
+            pstm.setInt(4, encabezado);
+            pstm.setInt(5, idproducto);
+            pstm.setInt(6, iddetalle);
             pstm.execute();
             pstm.close();
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("Error al modiificar detalle "+e);
         }
     }
 

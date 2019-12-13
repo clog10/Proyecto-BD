@@ -395,13 +395,29 @@ public class Venta extends javax.swing.JFrame {
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
+        
+        double costo = 0.0;
+        double costoTotal = 0.0;
+        int idproducto = 0;
+        int detalle = Integer.parseInt(jTextFieldIDDETALLE.getText());
+        int cantidad = Integer.parseInt(jTextFieldCANTPRODUCT.getText());
+        costo = Double.parseDouble(jTextFieldCOSTO.getText());
+        costoTotal = costo * cantidad;
+        int venta = Integer.parseInt(jTextFieldIDVENTA.getText());
+        String prr = (String) jComboBox2.getSelectedItem();
+        String[] textElements = prr.split(",");
+        for (int i = 0; i < textElements.length; i++) {
+            idproducto = Integer.parseInt(textElements[0]);
 
+        }
+        vvv.updateVenta(detalle, costoTotal, cantidad,venta,idproducto);
+        updateTablaDetalle();
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         fila = jTable1.rowAtPoint(evt.getPoint());                 
-        /* if (fila > -1){                          
+        if (fila > -1){                          
              jTextFieldIDVENTA.setText(String.valueOf(jTable1.getValueAt(fila, 0)));
              jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(fila, 1)));
              jTextFieldCANTPRODUCT.setText(String.valueOf(jTable2.getValueAt(fila, 5)));
@@ -409,7 +425,7 @@ public class Venta extends javax.swing.JFrame {
              jTextFieldDESCRIP.setText(String.valueOf(jTable2.getValueAt(fila, 3)));
              jTextFieldIDDETALLE.setText(String.valueOf(jTable2.getValueAt(fila, 1)));
              jTextFieldCOSTTOTAL.setText(String.valueOf(jTable2.getValueAt(fila, 6)));
-         }*/
+         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
